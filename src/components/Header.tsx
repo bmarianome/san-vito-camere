@@ -9,18 +9,13 @@ import {
   SheetClose,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { Globe, Menu, Award, Heart, MapPin } from "lucide-react";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { Menu, Award, Heart, MapPin } from "lucide-react";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import Container from "./Container";
+import LanguageSwitcher from "./LanguageSwitcher";
 
-export default function Header() {
+export default function Header({ lang }: { lang: Locale }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -31,45 +26,80 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const texts = {
+    navigation: {
+      home: {
+        en: "Home",
+        de: "Startseite",
+        it: "Home",
+        sk: "Domov",
+      },
+      about: {
+        en: "About the Place",
+        de: "Über den Ort",
+        it: "Sul Posto",
+        sk: "O mieste",
+      },
+      apartments: {
+        en: "Apartments",
+        de: "Apartments",
+        it: "Appartamenti",
+        sk: "Apartmány",
+      },
+      services: {
+        en: "Services",
+        de: "Dienstleistungen",
+        it: "Servizi",
+        sk: "Služby",
+      },
+      contact: {
+        en: "Contact",
+        de: "Kontakt",
+        it: "Contatto",
+        sk: "Kontakt",
+      },
+    },
+    menu: {
+      title: {
+        en: "Menu",
+        de: "Menü",
+        it: "Menu",
+        sk: "Menu",
+      },
+    },
+    contact: {
+      info: {
+        en: "Contact Information",
+        de: "Kontakt Informationen",
+        it: "Informazioni di Contatto",
+        sk: "Kontaktné informácie",
+      },
+      available: {
+        en: "Available 24/7",
+        de: "24/7 verfügbar",
+        it: "Disponibile 24/7",
+        sk: "Dostupné 24/7",
+      },
+    },
+    cta: {
+      book: {
+        en: "Book Now",
+        de: "Jetzt buchen",
+        it: "Prenota Ora",
+        sk: "Rezervovať teraz",
+      },
+    },
+  };
+
   const navigationLinks = [
-    { href: "#hero", label: "Inicio" },
-    { href: "#info", label: "Sobre el Lugar" },
-    { href: "#apartments", label: "Departamentos" },
-    { href: "#services", label: "Servicios" },
-    { href: "#cta", label: "Contacto" },
+    { href: "#hero", label: texts.navigation.home[lang] },
+    { href: "#info", label: texts.navigation.about[lang] },
+    { href: "#apartments", label: texts.navigation.apartments[lang] },
+    { href: "#services", label: texts.navigation.services[lang] },
+    { href: "#cta", label: texts.navigation.contact[lang] },
   ];
 
-  const languages = [
-    { label: "Español" },
-    { label: "English" },
-    { label: "Italiano" },
-  ];
 
-  const LanguageSwitcher = ({ className }: { className?: string }) => (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button
-          variant="outline"
-          className={cn(
-            "rounded-full border hover:bg-white/20",
-            className,
-            scrolled
-              ? "border-black/15 bg-white text-[#3f2561]"
-              : "border-white/30 bg-white/10 text-white",
-          )}
-        >
-          <Globe className="mr-2" /> Español
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        {languages.map((language) => (
-          <DropdownMenuItem key={language.label}>
-            {language.label}
-          </DropdownMenuItem>
-        ))}
-      </DropdownMenuContent>
-    </DropdownMenu>
-  );
 
   return (
     <header className="fixed inset-x-0 top-0 z-40">
@@ -108,10 +138,10 @@ export default function Header() {
             ))}
           </nav>
 
-          <LanguageSwitcher className="hidden lg:flex" />
+          <LanguageSwitcher className="hidden lg:flex" scrolled={scrolled} />
 
           <div className="flex items-center gap-2 lg:hidden">
-            <LanguageSwitcher />
+            <LanguageSwitcher scrolled={scrolled} />
             <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
               <SheetTrigger asChild>
                 <Button
@@ -131,7 +161,7 @@ export default function Header() {
                 side="right"
                 className="border-l-none bg-black text-white"
               >
-                <SheetTitle className="sr-only">Menu</SheetTitle>
+                <SheetTitle className="sr-only">{texts.menu.title[lang]}</SheetTitle>
                 {/* Elementos decorativos de fondo */}
                 <div className="absolute top-20 left-10 h-32 w-32 rounded-full bg-gradient-to-br from-[#F59E0B]/20 to-transparent blur-3xl"></div>
                 <div className="absolute right-10 bottom-20 h-40 w-40 rounded-full bg-gradient-to-tl from-[#6e4a8d]/20 to-transparent blur-3xl"></div>
@@ -200,7 +230,7 @@ export default function Header() {
                       {/* Información de contacto */}
                       <div className="space-y-3">
                         <h3 className="text-sm font-semibold text-white/90">
-                          Información de Contacto
+                          {texts.contact.info[lang]}
                         </h3>
                         <div className="space-y-2 text-sm text-white/70">
                           <div className="flex items-center gap-2">
@@ -209,7 +239,7 @@ export default function Header() {
                           </div>
                           <div className="flex items-center gap-2">
                             <Heart className="size-4 text-[#F59E0B]" />
-                            <span>Disponible 24/7</span>
+                            <span>{texts.contact.available[lang]}</span>
                           </div>
                         </div>
                       </div>
@@ -236,7 +266,7 @@ export default function Header() {
                             className="flex items-center justify-center gap-2"
                           >
                             <Heart className="size-4" />
-                            Reserva Ahora
+                            {texts.cta.book[lang]}
                           </Link>
                         </Button>
                       </SheetClose>
