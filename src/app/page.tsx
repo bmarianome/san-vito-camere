@@ -68,7 +68,7 @@ function Hero() {
   return (
     <section
       id="hero"
-      className="relative isolate flex h-svh flex-col overflow-hidden"
+      className="relative isolate flex h-svh flex-col overflow-hidden scroll-mt-12"
     >
       <div className="absolute inset-0 -z-10">
         <Image
@@ -105,29 +105,29 @@ function Hero() {
 
         <div className="mt-8 max-w-4xl">
           <p className="text-lg text-white/90 sm:text-xl md:text-2xl">
-            B2B Central con 3 departamentos para tu estancia soñada
-          </p>
-          <p className="mt-2 text-base text-white/75 sm:text-lg">
-            en{" "}
+            B2B Central con 3 departamentos para tu estancia soñada en{" "}
+            <br className="hidden lg:block" />
             <span className="font-semibold text-[#F59E0B]">
               San Vito Lo Capo
             </span>
           </p>
+          <p className="mt-2 text-base text-white/75 sm:text-lg"> </p>
         </div>
 
-        <div className="mt-12 flex flex-wrap items-center justify-center gap-6 text-sm text-white/80">
-          <div className="flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 backdrop-blur-sm">
-            <MapPin className="size-4" />
-            <span>Centro Histórico</span>
-          </div>
-          <div className="flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 backdrop-blur-sm">
-            <Waves className="size-4" />
-            <span>A pasos de Playa</span>
-          </div>
-          <div className="flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 backdrop-blur-sm">
-            <Shield className="size-4" />
-            <span>100% Confiable</span>
-          </div>
+        <div className="mt-12 flex flex-wrap items-center justify-center gap-4 text-sm text-white/80 lg:gap-6">
+          {[
+            { icon: MapPin, text: "Centro Histórico" },
+            { icon: Waves, text: "A pasos de Playa" },
+            { icon: Shield, text: "100% Confiable" },
+          ].map((item, index) => (
+            <div
+              key={index}
+              className="flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 backdrop-blur-sm"
+            >
+              <item.icon className="size-4" />
+              <span>{item.text}</span>
+            </div>
+          ))}
         </div>
 
         <div className="mt-12 flex flex-col gap-4 sm:flex-row sm:gap-6">
@@ -159,7 +159,7 @@ function Info() {
   return (
     <section
       id="info"
-      className="relative overflow-hidden bg-gradient-to-br from-[#f8f6ff] to-white py-16"
+      className="relative overflow-hidden bg-gradient-to-br from-[#f8f6ff] to-white py-16 scroll-mt-12"
     >
       <div className="absolute top-0 left-0 h-96 w-96 rounded-full bg-gradient-to-br from-[#6e4a8d]/10 to-transparent blur-3xl"></div>
       <div className="absolute right-0 bottom-0 h-96 w-96 rounded-full bg-gradient-to-tl from-[#F59E0B]/10 to-transparent blur-3xl"></div>
@@ -288,7 +288,7 @@ function Apartments() {
   return (
     <section
       id="apartments"
-      className="relative overflow-hidden bg-gradient-to-br from-white to-[#f8f6ff] py-16"
+      className="relative overflow-hidden bg-gradient-to-br from-white to-[#f8f6ff] py-16 scroll-mt-12"
     >
       <div className="absolute top-20 left-20 h-32 w-32 rounded-full bg-gradient-to-br from-[#6e4a8d]/20 to-transparent blur-2xl"></div>
       <div className="absolute right-20 bottom-20 h-40 w-40 rounded-full bg-gradient-to-tl from-[#F59E0B]/20 to-transparent blur-2xl"></div>
@@ -383,33 +383,18 @@ function Apartments() {
                     </div>
                   </div>
 
-                  <div className="mt-auto space-y-3">
-                    <Button
-                      asChild
-                      className="group/btn w-full rounded-2xl bg-gradient-to-r from-[#F59E0B] to-[#f6a92a] py-3 text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                  <Button
+                    asChild
+                    className="group/btn w-full rounded-2xl bg-gradient-to-r from-[#F59E0B] to-[#f6a92a] py-3 text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                  >
+                    <Link
+                      href="#cta"
+                      className="flex items-center justify-center gap-2"
                     >
-                      <Link
-                        href="#cta"
-                        className="flex items-center justify-center gap-2"
-                      >
-                        <Calendar className="size-4 transition-transform group-hover/btn:scale-110" />
-                        Reservar Ahora
-                      </Link>
-                    </Button>
-                    <Button
-                      asChild
-                      variant="outline"
-                      className="w-full rounded-2xl border-2 border-[#d6c6e5] py-3 text-[#4f2f70] transition-all duration-300 hover:border-[#6e4a8d] hover:bg-[#6e4a8d] hover:text-white"
-                    >
-                      <Link
-                        href="#apartments"
-                        className="flex items-center justify-center gap-2"
-                      >
-                        <Eye className="size-4" />
-                        Ver Detalles
-                      </Link>
-                    </Button>
-                  </div>
+                      <Calendar className="size-4 transition-transform group-hover/btn:scale-110" />
+                      Reservar Ahora
+                    </Link>
+                  </Button>
                 </div>
 
                 <div className={cn("h-1 bg-gradient-to-r", apto.color)}></div>
@@ -452,7 +437,7 @@ function Services() {
   return (
     <section
       id="services"
-      className="relative overflow-hidden bg-gradient-to-br from-[#f8f6ff] via-white to-[#fff9f0] py-16"
+      className="relative overflow-hidden bg-gradient-to-br from-[#f8f6ff] via-white to-[#fff9f0] py-16 scroll-mt-12"
     >
       <div className="absolute top-10 right-10 h-64 w-64 rounded-full bg-gradient-to-br from-[#F59E0B]/10 to-transparent blur-3xl"></div>
       <div className="absolute bottom-10 left-10 h-48 w-48 rounded-full bg-gradient-to-tl from-[#6e4a8d]/10 to-transparent blur-3xl"></div>
@@ -605,7 +590,7 @@ function Experiences() {
   return (
     <section
       id="experiences"
-      className="relative overflow-hidden bg-gradient-to-br from-white via-[#f0f8ff] to-[#f8f6ff] py-16"
+      className="relative overflow-hidden bg-gradient-to-br from-white via-[#f0f8ff] to-[#f8f6ff] py-16 scroll-mt-12"
     >
       <div className="absolute top-20 left-20 h-40 w-40 rounded-full bg-gradient-to-br from-[#6e4a8d]/10 to-transparent blur-2xl"></div>
       <div className="absolute right-20 bottom-20 h-56 w-56 rounded-full bg-gradient-to-tl from-[#F59E0B]/10 to-transparent blur-2xl"></div>
@@ -767,7 +752,7 @@ function Experiences() {
 
 function City() {
   return (
-    <section id="city" className="bg-[#3f2561]/5 py-16">
+    <section id="city" className="bg-[#3f2561]/5 py-16 scroll-mt-12">
       <Container>
         <div className="text-center">
           <h2 className="font-display text-5xl text-[#6e4a8d]">
@@ -805,7 +790,7 @@ function Events() {
   return (
     <section
       id="events"
-      className="relative overflow-hidden bg-gradient-to-br from-[#f8f6ff] via-white to-[#fff9f0] py-16"
+      className="relative overflow-hidden bg-gradient-to-br from-[#f8f6ff] via-white to-[#fff9f0] py-16 scroll-mt-12"
     >
       <div className="absolute top-10 left-10 h-48 w-48 rounded-full bg-gradient-to-br from-[#F59E0B]/10 to-transparent blur-2xl"></div>
       <div className="absolute right-10 bottom-10 h-40 w-40 rounded-full bg-gradient-to-tl from-[#6e4a8d]/10 to-transparent blur-2xl"></div>
@@ -989,7 +974,7 @@ function Events() {
 
 function CTA() {
   return (
-    <section id="cta" className="relative overflow-hidden">
+    <section id="cta" className="relative overflow-hidden scroll-mt-12">
       <div className="absolute inset-0">
         <Image
           src="https://static-assets-manager.s3.us-east-1.amazonaws.com/Contenedor_navbar_hero_bf4e4d9c2a.png"
@@ -1007,9 +992,7 @@ function CTA() {
       <div className="relative z-10 mx-auto max-w-7xl px-6 py-20 text-center text-white">
         <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-6 py-3 backdrop-blur-sm">
           <Heart className="size-4" />
-          <span className="text-sm font-medium">
-            Experiencia Premium • Tu hogar lejos de casa
-          </span>
+          <span className="text-sm font-medium">Experiencia Premium</span>
         </div>
 
         <h2 className="font-display text-center text-4xl sm:text-6xl md:text-7xl lg:text-8xl">
@@ -1029,7 +1012,7 @@ function CTA() {
           </p>
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-center gap-6 sm:flex-row sm:gap-8">
+        <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-8">
           <Button
             asChild
             className="group hover:shadow-3xl w-full rounded-3xl bg-gradient-to-r from-[#F59E0B] to-[#f6a92a] px-12 py-6 text-xl font-bold text-white shadow-2xl transition-all duration-500 hover:scale-110 hover:from-[#f6a92a] hover:to-[#F59E0B] sm:w-auto"
