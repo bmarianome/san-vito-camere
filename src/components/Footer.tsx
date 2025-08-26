@@ -167,7 +167,9 @@ export default function Footer({ lang }: { lang: Locale }) {
                         <Phone className="size-4 text-[#F59E0B]" />
                       </div>
                       <div>
-                        <div className="font-medium text-white">{texts.contact.phone[lang]}</div>
+                        <div className="font-medium text-white">
+                          {texts.contact.phone[lang]}
+                        </div>
                         <div className="text-white/70">(+39) 329 068 9750</div>
                       </div>
                     </li>
@@ -176,7 +178,9 @@ export default function Footer({ lang }: { lang: Locale }) {
                         <Mail className="size-4 text-[#F59E0B]" />
                       </div>
                       <div>
-                        <div className="font-medium text-white">{texts.contact.email[lang]}</div>
+                        <div className="font-medium text-white">
+                          {texts.contact.email[lang]}
+                        </div>
                         <div className="text-white/70">
                           centralsanvito@gmail.com
                         </div>
@@ -187,7 +191,9 @@ export default function Footer({ lang }: { lang: Locale }) {
                         <MapPin className="size-4 text-[#F59E0B]" />
                       </div>
                       <div>
-                        <div className="font-medium text-white">{texts.contact.address[lang]}</div>
+                        <div className="font-medium text-white">
+                          {texts.contact.address[lang]}
+                        </div>
                         <div className="text-white/70">
                           Via Peralta 10
                           <br />

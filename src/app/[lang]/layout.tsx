@@ -15,15 +15,7 @@ export const metadata: Metadata = {
 const montserrat = Montserrat({
   subsets: ["latin"],
   display: "swap",
-  weight: [
-    "300",
-    "400",
-    "500",
-    "600",
-    "700",
-    "800",
-    "900",
-  ],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
   variable: "--font-montserrat",
 });
 
@@ -34,17 +26,18 @@ export async function generateStaticParams() {
 export default async function RootLayout({
   children,
   params,
-}: Readonly<{ children: React.ReactNode; params: Promise<{ lang: Locale }> }>) {
+}: {
+  children: React.ReactNode;
+  params: Promise<{ lang: string }>;
+}) {
   const { lang } = await params;
 
-  console.log(lang);
-
   return (
-    <html lang="es" className={`${montserrat.variable} scroll-smooth`}>
+    <html lang={lang} className={`${montserrat.variable} scroll-smooth`}>
       <body>
-        <Header lang={lang} />
+        <Header lang={lang as Locale} />
         {children}
-        <Footer lang={lang} />
+        <Footer lang={lang as Locale} />
       </body>
     </html>
   );

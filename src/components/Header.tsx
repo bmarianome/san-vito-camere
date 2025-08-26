@@ -99,8 +99,6 @@ export default function Header({ lang }: { lang: Locale }) {
     { href: "#cta", label: texts.navigation.contact[lang] },
   ];
 
-
-
   return (
     <header className="fixed inset-x-0 top-0 z-40">
       <div
@@ -161,7 +159,9 @@ export default function Header({ lang }: { lang: Locale }) {
                 side="right"
                 className="border-l-none bg-black text-white"
               >
-                <SheetTitle className="sr-only">{texts.menu.title[lang]}</SheetTitle>
+                <SheetTitle className="sr-only">
+                  {texts.menu.title[lang]}
+                </SheetTitle>
                 {/* Elementos decorativos de fondo */}
                 <div className="absolute top-20 left-10 h-32 w-32 rounded-full bg-gradient-to-br from-[#F59E0B]/20 to-transparent blur-3xl"></div>
                 <div className="absolute right-10 bottom-20 h-40 w-40 rounded-full bg-gradient-to-tl from-[#6e4a8d]/20 to-transparent blur-3xl"></div>
