@@ -30,7 +30,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="es" className={`${montserrat.variable}`}>
+    <html lang="es" className={`${montserrat.variable} scroll-smooth`}>
       <body>
         <Header />
         {children}

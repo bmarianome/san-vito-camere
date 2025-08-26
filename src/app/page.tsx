@@ -2,19 +2,26 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import Container from "@/components/Container";
+import { cn } from "@/lib/utils";
+
+import {
   Calendar,
   Heart,
-  MessageCircle,
   MapPin,
   Bed,
   Bath,
   Waves,
   Star,
   Shield,
-  Clock,
   Phone,
   Mail,
-  Instagram,
   Award,
   Sun,
   Moon,
@@ -29,71 +36,40 @@ import {
   Wifi,
   Snowflake,
   Eye,
-  Zap,
   Bike,
   Castle,
   Building,
   ShoppingBag,
   Wind,
 } from "lucide-react";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import Container from "@/components/Container";
-import { cn } from "@/lib/utils";
-
-// Componente para separador visual entre secciones
-function SectionSeparator({ className = "" }: { className?: string }) {
-  return (
-    <div className={`relative py-8 ${className}`}>
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#6e4a8d]/10 to-transparent"></div>
-      <div className="relative flex items-center justify-center">
-        <div className="flex items-center gap-4">
-          <div className="h-px w-12 bg-gradient-to-r from-transparent to-[#6e4a8d]/30"></div>
-          <div className="flex gap-2">
-            <div className="h-2 w-2 rounded-full bg-[#F59E0B]/40"></div>
-            <div className="h-2 w-2 rounded-full bg-[#6e4a8d]/40"></div>
-            <div className="h-2 w-2 rounded-full bg-[#F59E0B]/40"></div>
-          </div>
-          <div className="h-px w-12 bg-gradient-to-l from-transparent to-[#6e4a8d]/30"></div>
-        </div>
-      </div>
-    </div>
-  );
-}
 
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-white via-[#f8f6ff] to-[#fff9f0]">
-      <HeroSection />
-      <SectionSeparator />
-      <InfoSection />
-      <SectionSeparator className="bg-gradient-to-r from-[#3f2561]/5 to-[#6e4a8d]/5" />
-      <ApartmentsSection />
-      <SectionSeparator />
-      <ServicesSection />
-      <SectionSeparator className="bg-gradient-to-r from-[#6e4a8d]/5 to-[#F59E0B]/5" />
-      <ExperiencesSection />
-      <SectionSeparator className="bg-gradient-to-r from-[#F59E0B]/5 to-[#3f2561]/5" />
-      <CitySection />
-      <SectionSeparator />
-      <EventsSection />
-      <CTASection />
+      <Hero />
+      <Separator />
+      <Info />
+      <Separator className="bg-gradient-to-r from-[#3f2561]/5 to-[#6e4a8d]/5" />
+      <Apartments />
+      <Separator />
+      <Services />
+      <Separator className="bg-gradient-to-r from-[#6e4a8d]/5 to-[#F59E0B]/5" />
+      <Experiences />
+      <Separator className="bg-gradient-to-r from-[#F59E0B]/5 to-[#3f2561]/5" />
+      <City />
+      <Separator />
+      <Events />
+      <CTA />
     </main>
   );
 }
 
-function HeroSection() {
+function Hero() {
   return (
     <section
       id="hero"
-      className="relative isolate min-h-screen overflow-hidden"
+      className="relative isolate lg:h-svh overflow-hidden flex flex-col"
     >
-      {/* Background con múltiples capas */}
       <div className="absolute inset-0 -z-10">
         <Image
           src="https://static-assets-manager.s3.us-east-1.amazonaws.com/Contenedor_navbar_hero_bf4e4d9c2a.png"
@@ -104,14 +80,11 @@ function HeroSection() {
           className="size-full object-cover"
         />
 
-        {/* Overlay con gradiente múltiple */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#3f2561]/80 via-[#4f2f70]/70 to-[#6e4a8d]/80" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
       </div>
 
-      {/* Contenido principal */}
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col items-center justify-center px-6 text-center text-white">
-        {/* Badge premium */}
+      <div className="relative mt-[76px] z-10 mx-auto flex grow max-w-7xl flex-col items-center justify-center px-6 text-center text-white">
         <div className="mb-6 rounded-full border border-white/30 bg-white/10 px-6 py-2 backdrop-blur-sm">
           <div className="flex items-center gap-2 text-sm font-medium text-white/90">
             <Award className="size-4" />
@@ -119,22 +92,17 @@ function HeroSection() {
           </div>
         </div>
 
-        {/* Título principal con gradiente */}
         <h1 className="font-display text-4xl tracking-wider sm:text-6xl md:text-7xl lg:text-8xl">
           <span className="bg-gradient-to-r from-white via-yellow-100 to-white bg-clip-text text-transparent">
             CENTRAL
           </span>
           <br />
           <span className="bg-gradient-to-r from-[#F59E0B] via-yellow-300 to-[#F59E0B] bg-clip-text text-transparent">
-            SAN VITO
+            SAN VITO CAMERE
           </span>
           <br />
-          <span className="text-3xl font-light sm:text-4xl md:text-5xl">
-            CAMERE
-          </span>
         </h1>
 
-        {/* Subtítulo con mejor jerarquía */}
         <div className="mt-8 max-w-4xl">
           <p className="text-lg text-white/90 sm:text-xl md:text-2xl">
             B2B Central con 3 departamentos para tu estancia soñada
@@ -147,7 +115,6 @@ function HeroSection() {
           </p>
         </div>
 
-        {/* Características destacadas */}
         <div className="mt-12 flex flex-wrap items-center justify-center gap-6 text-sm text-white/80">
           <div className="flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 backdrop-blur-sm">
             <MapPin className="size-4" />
@@ -163,7 +130,6 @@ function HeroSection() {
           </div>
         </div>
 
-        {/* Botones con mejor diseño */}
         <div className="mt-12 flex flex-col gap-4 sm:flex-row sm:gap-6">
           <Button
             asChild
@@ -189,51 +155,12 @@ function HeroSection() {
   );
 }
 
-function InfoSection() {
-  const features = [
-    {
-      icon: MapPin,
-      text: "Ubicación central: Via Peralta 10 (zona peatonal)",
-      color: "text-[#6e4a8d]",
-      bgColor: "bg-[#f8f6ff]",
-      borderColor: "border-[#d6c6e5]",
-    },
-    {
-      icon: Waves,
-      text: "A dos pasos de la playa",
-      color: "text-[#4f2f70]",
-      bgColor: "bg-[#f0e8ff]",
-      borderColor: "border-[#d6c6e5]",
-    },
-    {
-      icon: Coffee,
-      text: "Cerca de bares, heladerías y restaurantes",
-      color: "text-[#F59E0B]",
-      bgColor: "bg-[#fff9f0]",
-      borderColor: "border-[#fbbf24]",
-    },
-    {
-      icon: Mountain,
-      text: "A minutos de Zingaro y Macari",
-      color: "text-[#8b6ba8]",
-      bgColor: "bg-[#f8f6ff]",
-      borderColor: "border-[#d6c6e5]",
-    },
-    {
-      icon: Bed,
-      text: "3 departamentos disponibles",
-      color: "text-[#6e4a8d]",
-      bgColor: "bg-[#f0e8ff]",
-      borderColor: "border-[#d6c6e5]",
-    },
-  ];
-
+function Info() {
   return (
     <section
       id="info"
-      className="relative overflow-hidden bg-gradient-to-br from-[#f8f6ff] to-white py-12"
+      className="relative overflow-hidden bg-gradient-to-br from-[#f8f6ff] to-white py-16"
     >
-      {/* Elementos decorativos de fondo */}
       <div className="absolute top-0 left-0 h-96 w-96 rounded-full bg-gradient-to-br from-[#6e4a8d]/10 to-transparent blur-3xl"></div>
       <div className="absolute right-0 bottom-0 h-96 w-96 rounded-full bg-gradient-to-tl from-[#F59E0B]/10 to-transparent blur-3xl"></div>
 
@@ -254,7 +181,6 @@ function InfoSection() {
 
       <Container className="relative z-10">
         <div className="mx-auto max-w-6xl">
-          {/* Header con badge */}
           <div className="text-center">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-[#6e4a8d]/10 px-4 py-2">
               <Star className="size-4 text-[#6e4a8d]" />
@@ -283,8 +209,7 @@ function InfoSection() {
             </p>
           </div>
 
-          <div className="mt-20 grid items-center gap-12 lg:grid-cols-2">
-            {/* Contenido izquierdo */}
+          <div className="mt-12 grid items-center gap-12 lg:grid-cols-2">
             <div className="space-y-8">
               <div className="rounded-3xl bg-gradient-to-br from-white to-[#f8f6ff] p-8 shadow-xl">
                 <p className="text-xl leading-relaxed text-[#6e4a8d]">
@@ -315,19 +240,26 @@ function InfoSection() {
                 </div>
               </div>
 
-              {/* Features mejoradas */}
               <div className="space-y-4">
-                {features.map((feature, index) => (
+                {infoSectionFeatures.map((feature, index) => (
                   <div
                     key={index}
-                    className={`flex items-center gap-4 rounded-2xl border ${feature.borderColor} ${feature.bgColor} p-4`}
+                    className={cn(
+                      "flex items-center gap-4 rounded-2xl border p-4",
+                      feature.borderColor,
+                      feature.bgColor,
+                    )}
                   >
                     <div
-                      className={`rounded-xl ${feature.bgColor} p-3 ${feature.color}`}
+                      className={cn(
+                        "rounded-xl p-3",
+                        feature.bgColor,
+                        feature.color,
+                      )}
                     >
                       <feature.icon className="size-6" />
                     </div>
-                    <span className={`font-medium ${feature.color}`}>
+                    <span className={cn("font-medium", feature.color)}>
                       {feature.text}
                     </span>
                     <div className="ml-auto">
@@ -352,141 +284,18 @@ function InfoSection() {
   );
 }
 
-function ApartmentsSection() {
-  const a1 = [
-    {
-      src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/DSC_1490_JPG_U_U_fead6845cd.JPG",
-      w: 4016,
-      h: 6016,
-    },
-    {
-      src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/DSC_1492_JPG_U_77e37e6025.JPG",
-      w: 5860,
-      h: 3912,
-    },
-    {
-      src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20250221_092959_df3e0ad1e6.jpg",
-      w: 2322,
-      h: 3098,
-    },
-    {
-      src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20250220_210933_jpg_U_38ef53e24a.jpg",
-      w: 2368,
-      h: 3158,
-    },
-    {
-      src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20250221_093645_59815e13cc.jpg",
-      w: 3208,
-      h: 2406,
-    },
-    {
-      src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20250220_085033_3389836b19.jpg",
-      w: 2448,
-      h: 3264,
-    },
-  ];
-  const a2 = [
-    {
-      src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/DSC_1453_JPG_U_71c8bfbbed.JPG",
-      w: 4016,
-      h: 6016,
-    },
-    {
-      src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/DSC_1458_JPG_U_U_e7b808886c.JPG",
-      w: 4016,
-      h: 6016,
-    },
-    {
-      src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20250220_211206_jpg_U_1d8af6b45b.jpg",
-      w: 2368,
-      h: 3158,
-    },
-    {
-      src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20250220_210933_jpg_U_f6c95c8bcc.jpg",
-      w: 2368,
-      h: 3158,
-    },
-  ];
-  const a3 = [
-    {
-      src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/DSC_1469_JPG_UU_359b2d73f2.JPG",
-      w: 6016,
-      h: 4016,
-    },
-    {
-      src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/DSC_1483_JPG_U_U_f246bf342c.JPG",
-      w: 3772,
-      h: 5650,
-    },
-    {
-      src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20250220_215738_jpg_U_ddc5ec0156.jpg",
-      w: 3060,
-      h: 4080,
-    },
-    {
-      src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20250220_215317_baf3aa42bf.jpg",
-      w: 2268,
-      h: 3025,
-    },
-    {
-      src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20250220_215254_aafc052913.jpg",
-      w: 3264,
-      h: 2448,
-    },
-    {
-      src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20250220_220012_jpg_U_04940c1888.jpg",
-      w: 2448,
-      h: 3264,
-    },
-    {
-      src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20250220_220449_ce3120f986.jpg",
-      w: 3089,
-      h: 2316,
-    },
-    {
-      src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20250220_215338_jpg_U_05cd241703.jpg",
-      w: 2742,
-      h: 1827,
-    },
-  ];
-
-  const apartments = [
-    {
-      title: "Suite Marina",
-      images: a1,
-      description: "Amplio departamento con vista al mar",
-      features: ["2 habitaciones", "Cocina completa", "Terraza privada"],
-      color: "from-[#6e4a8d] to-[#4f2f70]",
-    },
-    {
-      title: "Suite Central",
-      images: a2,
-      description: "Perfecto para parejas y familias pequeñas",
-      features: ["1 habitación amplia", "Sala de estar", "Vista a la plaza"],
-      color: "from-[#4f2f70] to-[#8b6ba8]",
-    },
-    {
-      title: "Suite Panorámica",
-      images: a3,
-      description: "El más espacioso con vistas espectaculares",
-      features: ["3 habitaciones", "Sala amplia", "Terraza con vista"],
-      color: "from-[#4f2f70] to-[#8b6ba8]",
-    },
-  ];
-
+function Apartments() {
   return (
     <section
       id="apartments"
-      className="relative overflow-hidden bg-gradient-to-br from-white to-[#f8f6ff] py-12"
+      className="relative overflow-hidden bg-gradient-to-br from-white to-[#f8f6ff] py-16"
     >
-      {/* Elementos decorativos de fondo */}
       <div className="absolute top-20 left-20 h-32 w-32 rounded-full bg-gradient-to-br from-[#6e4a8d]/20 to-transparent blur-2xl"></div>
       <div className="absolute right-20 bottom-20 h-40 w-40 rounded-full bg-gradient-to-tl from-[#F59E0B]/20 to-transparent blur-2xl"></div>
 
       <Container className="relative z-10">
         <div className="mx-auto max-w-7xl">
-          {/* Header mejorado */}
-          <div className="mb-16 text-center">
+          <div className="mb-12 text-center">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#6e4a8d]/10 to-[#F59E0B]/10 px-6 py-3">
               <Bed className="size-5 text-[#6e4a8d]" />
               <span className="text-sm font-medium text-[#6e4a8d]">
@@ -511,19 +320,16 @@ function ApartmentsSection() {
             </p>
           </div>
 
-          {/* Grid de apartamentos mejorado */}
           <div className="grid gap-8 lg:grid-cols-3">
-            {apartments.map((apto, index) => (
+            {apartmentsData.map((apto, index) => (
               <div
                 key={apto.title}
                 className="relative flex h-full flex-col overflow-hidden rounded-3xl bg-white shadow-xl"
               >
-                {/* Badge con número */}
-                <div className="absolute top-6 left-6 z-20 rounded-full bg-white/90 px-3 py-1 text-sm font-bold text-[#6e4a8d] shadow-lg backdrop-blur-sm">
+                <div className="absolute top-4 left-4 z-20 rounded-full bg-white/90 px-3 py-1 text-sm font-bold text-[#6e4a8d] shadow-lg backdrop-blur-sm">
                   #{index + 1}
                 </div>
 
-                {/* Imagen con carousel mejorado */}
                 <div className="relative overflow-hidden">
                   <Carousel className="w-full">
                     <CarouselContent>
@@ -537,27 +343,26 @@ function ApartmentsSection() {
                               height={img.h}
                               className="size-full object-cover"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
                           </div>
                         </CarouselItem>
                       ))}
                     </CarouselContent>
-                    <CarouselPrevious className="-left-4 bg-white/90 text-[#6e4a8d] shadow-lg hover:bg-white" />
-                    <CarouselNext className="-right-4 bg-white/90 text-[#6e4a8d] shadow-lg hover:bg-white" />
+                    <CarouselPrevious className="left-4 cursor-pointer bg-white/90 text-[#6e4a8d] shadow-lg hover:bg-white" />
+                    <CarouselNext className="right-4 cursor-pointer bg-white/90 text-[#6e4a8d] shadow-lg hover:bg-white" />
 
-                    {/* Indicador de fotos */}
                     <div className="absolute right-4 bottom-4 rounded-full bg-black/50 px-3 py-1 text-xs text-white backdrop-blur-sm">
                       {apto.images.length} fotos
                     </div>
                   </Carousel>
 
-                  {/* Gradiente de colores único */}
                   <div
-                    className={`absolute inset-0 bg-gradient-to-br ${apto.color} opacity-10`}
+                    className={cn(
+                      "absolute inset-0 bg-gradient-to-br opacity-10",
+                      apto.color,
+                    )}
                   ></div>
                 </div>
 
-                {/* Contenido mejorado */}
                 <div className="flex flex-1 flex-col p-6">
                   <div className="mb-4">
                     <h3 className="mb-2 text-2xl font-bold text-[#4f2f70]">
@@ -565,7 +370,6 @@ function ApartmentsSection() {
                     </h3>
                     <p className="mb-4 text-[#4f2f70]/75">{apto.description}</p>
 
-                    {/* Features */}
                     <div className="space-y-2">
                       {apto.features.map((feature, i) => (
                         <div
@@ -579,7 +383,6 @@ function ApartmentsSection() {
                     </div>
                   </div>
 
-                  {/* Botones mejorados */}
                   <div className="mt-auto space-y-3">
                     <Button
                       asChild
@@ -609,19 +412,15 @@ function ApartmentsSection() {
                   </div>
                 </div>
 
-                {/* Elemento decorativo inferior */}
-                <div className={`h-1 bg-gradient-to-r ${apto.color}`}></div>
+                <div className={cn("h-1 bg-gradient-to-r", apto.color)}></div>
               </div>
             ))}
           </div>
 
-          {/* Sección adicional con características comunes */}
-          <div className="mt-16 rounded-3xl bg-gradient-to-r from-[#6e4a8d]/5 to-[#F59E0B]/5 p-8">
-            <div className="mb-8 text-center">
-              <h3 className="font-display mb-4 text-2xl text-[#6e4a8d]">
-                Todos nuestros departamentos incluyen:
-              </h3>
-            </div>
+          <div className="mt-12 rounded-3xl bg-gradient-to-r from-[#6e4a8d]/5 to-[#F59E0B]/5 p-8">
+            <h3 className="font-display mb-6 text-center text-2xl text-[#6e4a8d]">
+              Todos nuestros departamentos incluyen:
+            </h3>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {[
                 { icon: Wifi, text: "Wi-Fi de alta velocidad" },
@@ -649,83 +448,18 @@ function ApartmentsSection() {
   );
 }
 
-function ServicesSection() {
-  const items = [
-    {
-      icon: Bed,
-      title: "Habitaciones Premium",
-      desc: "Espacios elegantes con baño privado, aire acondicionado y Wi‑Fi de alta velocidad",
-      color: "from-[#6e4a8d] to-[#4f2f70]",
-      bgColor: "bg-[#f8f6ff]",
-      features: ["Cama King Size", "Ropa de cama premium", "Iluminación LED"],
-    },
-    {
-      icon: Eye,
-      title: "Vistas Espectaculares",
-      desc: "Disfruta de vistas panorámicas a la ciudad, mar o montañas desde tu habitación",
-      color: "from-[#6e4a8d] to-[#4f2f70]",
-      bgColor: "bg-[#f8f6ff]",
-      features: ["Ventanas amplias", "Balcón privado", "Persianas automáticas"],
-    },
-    {
-      icon: Waves,
-      title: "A Metros de la Playa",
-      desc: "Tu base perfecta para explorar San Vito Lo Capo y sus alrededores",
-      color: "from-[#F59E0B] to-[#f6a92a]",
-      bgColor: "bg-[#fff9f0]",
-      features: ["5 min caminando", "Toallas incluidas", "Duchas exteriores"],
-    },
-    {
-      icon: Utensils,
-      title: "Cocinas Equipadas",
-      desc: "Dos cocinas completamente equipadas para que cocines como en casa",
-      color: "from-[#F59E0B] to-[#f6a92a]",
-      bgColor: "bg-[#fff9f0]",
-      features: [
-        "Utensilios completos",
-        "Heladeras grandes",
-        "Microondas y horno",
-      ],
-    },
-    {
-      icon: Snowflake,
-      title: "Limpieza Premium",
-      desc: "Servicio de limpieza diario con productos ecológicos y atención personalizada",
-      color: "from-[#4f2f70] to-[#8b6ba8]",
-      bgColor: "bg-[#f0e8ff]",
-      features: ["Limpieza diaria", "Toallas frescas", "Productos ecológicos"],
-    },
-    {
-      icon: Sun,
-      title: "Terraza Panorámica",
-      desc: "Relájate con vistas al Monte Mónaco y al mar Mediterráneo",
-      color: "from-[#F59E0B] to-[#f6a92a]",
-      bgColor: "bg-[#fff9f0]",
-      features: ["Asador incluido", "Mesa exterior", "Iluminación nocturna"],
-    },
-    {
-      icon: Clock,
-      title: "Check-in Flexible",
-      desc: "Adáptate a tu horario con nuestro sistema de check-in flexible",
-      color: "from-[#8b6ba8] to-[#6e4a8d]",
-      bgColor: "bg-indigo-50",
-      features: ["Llegada tardía", "Check-out flexible", "Asistencia 24/7"],
-    },
-  ];
-
+function Services() {
   return (
     <section
       id="services"
-      className="relative overflow-hidden bg-gradient-to-br from-[#f8f6ff] via-white to-[#fff9f0] py-12"
+      className="relative overflow-hidden bg-gradient-to-br from-[#f8f6ff] via-white to-[#fff9f0] py-16"
     >
-      {/* Elementos decorativos de fondo */}
       <div className="absolute top-10 right-10 h-64 w-64 rounded-full bg-gradient-to-br from-[#F59E0B]/10 to-transparent blur-3xl"></div>
       <div className="absolute bottom-10 left-10 h-48 w-48 rounded-full bg-gradient-to-tl from-[#6e4a8d]/10 to-transparent blur-3xl"></div>
 
       <Container className="relative z-10">
         <div className="mx-auto max-w-7xl">
-          {/* Header mejorado */}
-          <div className="mb-16 text-center">
+          <div className="mb-12 text-center">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#F59E0B]/10 to-[#6e4a8d]/10 px-6 py-3">
               <Award className="size-5 text-[#6e4a8d]" />
               <span className="text-sm font-medium text-[#6e4a8d]">
@@ -759,71 +493,78 @@ function ServicesSection() {
             </div>
           </div>
 
-          {/* Grid de servicios mejorado */}
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {items.map((service, _index) => (
-              <div
-                key={service.title}
-                className="relative overflow-hidden rounded-3xl bg-white p-8 shadow-lg"
-              >
-                {/* Gradiente de fondo sutil */}
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-5`}
-                ></div>
-
-                {/* Icono mejorado */}
-                <div className="relative mb-6">
+            {servicesItems.map((service, _index) => (
+              <div className="relative h-full" key={service.title}>
+                <div className="relative h-full overflow-hidden rounded-3xl bg-white p-8 shadow-lg">
                   <div
-                    className={`inline-flex rounded-2xl ${service.bgColor} p-4`}
-                  >
-                    <div
-                      className={`rounded-xl bg-gradient-to-br ${service.color} p-4 text-white shadow-lg`}
-                    >
-                      <service.icon className="size-8" />
-                    </div>
-                  </div>
-                </div>
+                    className={cn(
+                      "absolute inset-0 bg-gradient-to-br opacity-5",
+                      service.color,
+                    )}
+                  ></div>
 
-                {/* Contenido */}
-                <div className="relative z-10">
-                  <h3 className="mb-3 text-2xl font-bold text-[#4f2f70]">
-                    {service.title}
-                  </h3>
-                  <p className="mb-6 leading-relaxed text-[#4f2f70]/75">
-                    {service.desc}
-                  </p>
-
-                  {/* Lista de características */}
-                  <div className="space-y-2">
-                    {service.features.map((feature, i) => (
+                  <div className="relative">
+                    <div className="mb-6 flex items-center gap-3">
                       <div
-                        key={i}
-                        className="flex items-center gap-3 text-sm text-[#4f2f70]/70"
+                        className={cn(
+                          "relative inline-flex rounded-2xl",
+                          service.bgColor,
+                        )}
                       >
                         <div
-                          className={`h-2 w-2 rounded-full bg-gradient-to-r ${service.color}`}
-                        ></div>
-                        <span className="font-medium">{feature}</span>
+                          className={cn(
+                            "rounded-xl bg-gradient-to-br p-4 text-white shadow-lg",
+                            service.color,
+                          )}
+                        >
+                          <service.icon className="size-8" />
+                        </div>
                       </div>
-                    ))}
+
+                      <h3 className="text-xl font-bold text-[#4f2f70]">
+                        {service.title}
+                      </h3>
+                    </div>
+
+                    <p className="mb-6 leading-relaxed text-[#4f2f70]/75">
+                      {service.desc}
+                    </p>
+
+                    <div className="space-y-2">
+                      {service.features.map((feature, i) => (
+                        <div
+                          key={i}
+                          className="flex items-center gap-3 text-sm text-[#4f2f70]/70"
+                        >
+                          <div
+                            className={cn(
+                              "h-2 w-2 rounded-full bg-gradient-to-r",
+                              service.color,
+                            )}
+                          ></div>
+                          <span className="font-medium">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
+
+                  <div
+                    className={cn(
+                      "absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r",
+                      service.color,
+                    )}
+                  ></div>
                 </div>
 
-                {/* Elemento decorativo inferior */}
-                <div
-                  className={`absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r ${service.color}`}
-                ></div>
-
-                {/* Badge premium */}
-                <div className="absolute top-4 right-4 rounded-full bg-gradient-to-r from-[#F59E0B] to-[#f6a92a] px-3 py-1 text-xs font-bold text-white shadow-sm">
+                <div className="absolute -top-2 right-6 rounded-full bg-gradient-to-r from-[#F59E0B] to-[#f6a92a] px-3 py-1 text-xs font-bold text-white shadow-sm">
                   Premium
                 </div>
               </div>
             ))}
           </div>
 
-          {/* Sección adicional con estadísticas */}
-          <div className="mt-20 rounded-3xl bg-gradient-to-r from-[#6e4a8d]/5 via-[#F59E0B]/5 to-[#6e4a8d]/5 p-8">
+          <div className="mt-12 rounded-3xl bg-gradient-to-r from-[#6e4a8d]/5 via-[#F59E0B]/5 to-[#6e4a8d]/5 p-8">
             <div className="mb-12 text-center">
               <h3 className="font-display mb-4 text-3xl text-[#6e4a8d]">
                 Por qué elegirnos
@@ -833,7 +574,7 @@ function ServicesSection() {
               </p>
             </div>
 
-            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid grid-cols-2 gap-8 sm:grid-cols-2 lg:grid-cols-4">
               {[
                 { number: "500+", label: "Huéspedes Satisfechos", icon: Heart },
                 { number: "5", label: "Años de Experiencia", icon: Award },
@@ -860,108 +601,18 @@ function ServicesSection() {
   );
 }
 
-function ExperiencesSection() {
-  const experiences = [
-    {
-      icon: Car,
-      title: "Transfer Premium",
-      description: "Transporte cómodo y seguro desde/hacia el aeropuerto",
-      details: "Servicio puerta a puerta con conductor profesional",
-      color: "from-[#6e4a8d] to-[#4f2f70]",
-      bgColor: "bg-[#f8f6ff]",
-      features: ["Aire acondicionado", "Wi-Fi incluido", "Agua fresca"],
-    },
-    {
-      icon: Anchor,
-      title: "Paseos en Barco",
-      description: "Navega por las cristalinas aguas del Mediterráneo",
-      details: "Visita la Reserva del Zingaro y la Tonnara de San Vito",
-      color: "from-[#F59E0B] to-[#f6a92a]",
-      bgColor: "bg-[#fff9f0]",
-      features: ["Equipo de snorkel", "Guía experto", "Paradas para nadar"],
-    },
-    {
-      icon: Waves,
-      title: "Deportes Acuáticos",
-      description: "Descubre la adrenalina del buceo, vela y windsurf",
-      details: "Escuelas certificadas con instructores profesionales",
-      color: "from-[#4f2f70] to-[#8b6ba8]",
-      bgColor: "bg-[#f0e8ff]",
-      features: ["Cursos para todos", "Equipo incluido", "Certificaciones"],
-    },
-    {
-      icon: Mountain,
-      title: "Escalada y Trekking",
-      description: "Conquista las rutas de senderismo más espectaculares",
-      details: "De septiembre a mayo, rutas para todos los niveles",
-      color: "from-[#6e4a8d] to-[#F59E0B]",
-      bgColor: "bg-[#f8f6ff]",
-      features: ["Guías locales", "Picnic incluido", "Vistas panorámicas"],
-    },
-    {
-      icon: Fish,
-      title: "Pesca Organizada",
-      description: "Vive la emoción de la pesca tradicional siciliana",
-      details: "Experiencia completa con equipo y guía profesional",
-      color: "from-[#F59E0B] to-[#f6a92a]",
-      bgColor: "bg-[#fff9f0]",
-      features: [
-        "Equipo completo",
-        "Limpieza incluida",
-        "Recetas tradicionales",
-      ],
-    },
-    {
-      icon: Compass,
-      title: "Excursiones Culturales",
-      description: "Descubre los secretos históricos de Sicilia",
-      details: "Visitas guiadas a templos, castillos y pueblos medievales",
-      color: "from-purple-500 to-indigo-500",
-      bgColor: "bg-purple-50",
-      features: ["Guías expertos", "Historia fascinante", "Fotos inolvidables"],
-    },
-  ];
-
-  const localAttractions = [
-    {
-      icon: Coffee,
-      title: "Gastronomía Local",
-      description: "Bares, heladerías y restaurantes con sabores únicos",
-      distance: "A 2 minutos",
-    },
-    {
-      icon: Camera,
-      title: "Plaza Santuario",
-      description: "Corazón histórico de San Vito Lo Capo",
-      distance: "A 3 minutos",
-    },
-    {
-      icon: Bike,
-      title: "Alquiler de Bicis",
-      description: "Recorre la costa en bicicleta",
-      distance: "A 5 minutos",
-    },
-    {
-      icon: ShoppingBag,
-      title: "Compras Locales",
-      description: "Artesanías, souvenirs y productos típicos",
-      distance: "A 1 minuto",
-    },
-  ];
-
+function Experiences() {
   return (
     <section
       id="experiences"
-      className="relative overflow-hidden bg-gradient-to-br from-white via-[#f0f8ff] to-[#f8f6ff] py-12"
+      className="relative overflow-hidden bg-gradient-to-br from-white via-[#f0f8ff] to-[#f8f6ff] py-16"
     >
-      {/* Elementos decorativos de fondo */}
       <div className="absolute top-20 left-20 h-40 w-40 rounded-full bg-gradient-to-br from-[#6e4a8d]/10 to-transparent blur-2xl"></div>
       <div className="absolute right-20 bottom-20 h-56 w-56 rounded-full bg-gradient-to-tl from-[#F59E0B]/10 to-transparent blur-2xl"></div>
 
       <Container className="relative z-10">
         <div className="mx-auto max-w-7xl">
-          {/* Header mejorado */}
-          <div className="mb-16 text-center">
+          <div className="mb-12 text-center">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#6e4a8d]/10 to-[#F59E0B]/10 px-6 py-3">
               <Compass className="size-5 text-[#6e4a8d]" />
               <span className="text-sm font-medium text-[#6e4a8d]">
@@ -993,73 +644,80 @@ function ExperiencesSection() {
             </p>
           </div>
 
-          {/* Grid de experiencias */}
-          <div className="mb-20 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {experiences.map((experience, _index) => (
-              <div
-                key={experience.title}
-                className="relative overflow-hidden rounded-3xl bg-white p-8 shadow-lg"
-              >
-                {/* Gradiente de fondo sutil */}
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${experience.color} opacity-0 transition-opacity duration-300 group-hover:opacity-5`}
-                ></div>
-
-                {/* Icono mejorado */}
-                <div className="relative mb-6">
+          <div className="mb-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {experiencesData.map((experience, _index) => (
+              <div className="relative" key={experience.title}>
+                <div className="relative overflow-hidden rounded-3xl bg-white p-8 shadow-lg">
                   <div
-                    className={`inline-flex rounded-2xl ${experience.bgColor} p-4`}
-                  >
-                    <div
-                      className={`rounded-xl bg-gradient-to-br ${experience.color} p-4 text-white shadow-lg`}
-                    >
-                      <experience.icon className="size-8" />
-                    </div>
-                  </div>
-                </div>
+                    className={cn(
+                      "absolute inset-0 bg-gradient-to-br opacity-0 transition-opacity duration-300 group-hover:opacity-5",
+                      experience.color,
+                    )}
+                  ></div>
 
-                {/* Contenido */}
-                <div className="relative z-10">
-                  <h3 className="mb-3 text-2xl font-bold text-[#4f2f70]">
-                    {experience.title}
-                  </h3>
-                  <p className="mb-2 font-medium text-[#4f2f70]/75">
-                    {experience.description}
-                  </p>
-                  <p className="mb-6 text-sm leading-relaxed text-[#4f2f70]/60">
-                    {experience.details}
-                  </p>
-
-                  {/* Lista de características */}
-                  <div className="space-y-2">
-                    {experience.features.map((feature, i) => (
+                  <div className="relative">
+                    <div className="mb-6 flex items-center gap-3">
                       <div
-                        key={i}
-                        className="flex items-center gap-3 text-sm text-[#4f2f70]/70"
+                        className={cn(
+                          "inline-flex rounded-2xl p-4",
+                          experience.bgColor,
+                        )}
                       >
                         <div
-                          className={`h-2 w-2 rounded-full bg-gradient-to-r ${experience.color}`}
-                        ></div>
-                        <span className="font-medium">{feature}</span>
+                          className={cn(
+                            "rounded-xl bg-gradient-to-br p-4 text-white shadow-lg",
+                            experience.color,
+                          )}
+                        >
+                          <experience.icon className="size-8" />
+                        </div>
                       </div>
-                    ))}
+
+                      <h3 className="text-xl font-bold text-[#4f2f70]">
+                        {experience.title}
+                      </h3>
+                    </div>
+
+                    <p className="mb-2 font-medium text-[#4f2f70]/75">
+                      {experience.description}
+                    </p>
+                    <p className="mb-6 text-sm leading-relaxed text-[#4f2f70]/60">
+                      {experience.details}
+                    </p>
+
+                    <div className="space-y-2">
+                      {experience.features.map((feature, i) => (
+                        <div
+                          key={i}
+                          className="flex items-center gap-3 text-sm text-[#4f2f70]/70"
+                        >
+                          <div
+                            className={cn(
+                              "h-2 w-2 rounded-full bg-gradient-to-r",
+                              experience.color,
+                            )}
+                          ></div>
+                          <span className="font-medium">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
+
+                  <div
+                    className={cn(
+                      "absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r",
+                      experience.color,
+                    )}
+                  ></div>
                 </div>
 
-                {/* Elemento decorativo inferior */}
-                <div
-                  className={`absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r ${experience.color}`}
-                ></div>
-
-                {/* Badge de precio (opcional) */}
-                <div className="absolute top-4 right-4 rounded-full bg-gradient-to-r from-[#F59E0B] to-[#f6a92a] px-3 py-1 text-xs font-bold text-white shadow-sm">
+                <div className="absolute -top-2 right-6 rounded-full bg-gradient-to-r from-[#F59E0B] to-[#f6a92a] px-3 py-1 text-xs font-bold text-white shadow-sm">
                   Desde €25
                 </div>
               </div>
             ))}
           </div>
 
-          {/* Sección de atracciones locales */}
           <div className="rounded-3xl bg-gradient-to-r from-[#6e4a8d]/5 to-[#F59E0B]/5 p-8">
             <div className="mb-12 text-center">
               <h3 className="font-display mb-4 text-3xl text-[#6e4a8d]">
@@ -1071,7 +729,7 @@ function ExperiencesSection() {
             </div>
 
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {localAttractions.map((attraction, index) => (
+              {localAttractionsData.map((attraction, index) => (
                 <div key={index} className="text-center">
                   <div className="mx-auto mb-4 flex size-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[#6e4a8d] to-[#4f2f70] text-white shadow-lg">
                     <attraction.icon className="size-8" />
@@ -1093,8 +751,7 @@ function ExperiencesSection() {
             </div>
           </div>
 
-          {/* Call to action */}
-          <div className="mt-16 text-center">
+          <div className="mt-12 text-center">
             <div className="inline-flex items-center gap-3 rounded-2xl bg-gradient-to-r from-[#6e4a8d] to-[#4f2f70] px-8 py-4 text-white shadow-lg">
               <Phone className="size-5" />
               <span className="font-medium">
@@ -1108,36 +765,9 @@ function ExperiencesSection() {
   );
 }
 
-function CitySection() {
-  const cityImages = [
-    {
-      src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20240417_224229_bd7cc53123.jpg",
-      w: 2875,
-      h: 4020,
-    },
-    {
-      src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/DSC_1377_6b65a24025.JPG",
-      w: 5528,
-      h: 3685,
-    },
-    {
-      src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20250220_111429_917b6a0da1.jpg",
-      w: 3910,
-      h: 2607,
-    },
-    {
-      src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20240415_200831_966f0a0014.jpg",
-      w: 3948,
-      h: 2960,
-    },
-    {
-      src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20250220_112404_bd327f5f38.jpg",
-      w: 3098,
-      h: 2322,
-    },
-  ];
+function City() {
   return (
-    <section id="city" className="bg-[#3f2561]/5 py-12">
+    <section id="city" className="bg-[#3f2561]/5 py-16">
       <Container>
         <div className="text-center">
           <h2 className="font-display text-5xl text-[#6e4a8d]">
@@ -1148,7 +778,7 @@ function CitySection() {
           </p>
         </div>
         <div className="mt-10 grid gap-6 sm:grid-cols-2">
-          {cityImages.map((img, i) => (
+          {cityImagesData.map((img, i) => (
             <div
               key={i}
               className={cn(
@@ -1171,99 +801,18 @@ function CitySection() {
   );
 }
 
-function EventsSection() {
-  const eventos = [
-    {
-      title: "Cous Cous Fest",
-      date: "Septiembre",
-      description: "El festival gastronómico más importante de Sicilia",
-      icon: Utensils,
-      color: "from-[#F59E0B] to-[#f6a92a]",
-      bgColor: "bg-[#fff9f0]",
-      details: "Degusta el mejor couscous del mundo con chefs internacionales",
-    },
-    {
-      title: "Festival de los Barriletes",
-      date: "Mayo",
-      icon: Wind,
-      color: "from-[#6e4a8d] to-[#4f2f70]",
-      bgColor: "bg-[#f0e8ff]",
-      details: "Espectáculo único de barriletes gigantes en la playa",
-    },
-    {
-      title: "Fiesta de San Vito",
-      date: "Junio",
-      icon: Star,
-      color: "from-[#4f2f70] to-[#8b6ba8]",
-      bgColor: "bg-[#f0e8ff]",
-      details: "Celebración patronal con procesiones y fuegos artificiales",
-    },
-    {
-      title: "Noche de las Estrellas",
-      date: "Agosto",
-      icon: Moon,
-      color: "from-[#8b6ba8] to-[#6e4a8d]",
-      bgColor: "bg-[#f8f6ff]",
-      details: "Observación astronómica y eventos culturales nocturnos",
-    },
-  ];
-
-  const lugares = [
-    {
-      title: "Parque de Segesta",
-      description: "Templo dórico y anfiteatro griego del siglo V a.C.",
-      distance: "45 min",
-      icon: Camera,
-      color: "from-[#6e4a8d] to-[#F59E0B]",
-      bgColor: "bg-[#f8f6ff]",
-      features: ["Templo griego", "Anfiteatro", "Vistas panorámicas"],
-    },
-    {
-      title: "Erice Medieval",
-      description: "Pueblo medieval con castillos y vistas al mar",
-      distance: "1.5 horas",
-      icon: Castle,
-      color: "from-[#8b6ba8] to-[#6e4a8d]",
-      bgColor: "bg-[#f0e8ff]",
-      features: [
-        "Castillo normando",
-        "Murallas antiguas",
-        "Heladerías artesanales",
-      ],
-    },
-    {
-      title: "Trapani Histórico",
-      description: "Ciudad con arquitectura barroca y puerto pesquero",
-      distance: "1 hora",
-      icon: Building,
-      color: "from-[#4f2f70] to-[#8b6ba8]",
-      bgColor: "bg-[#f8f6ff]",
-      features: ["Puerto antiguo", "Palacios barrocos", "Mercado de pescado"],
-    },
-    {
-      title: "Reserva Zingaro",
-      description: "Parque natural con calas cristalinas y senderos",
-      distance: "30 min",
-      icon: Mountain,
-      color: "from-[#F59E0B] to-[#f6a92a]",
-      bgColor: "bg-[#fff9f0]",
-      features: ["Calas vírgenes", "Senderos", "Observación de aves"],
-    },
-  ];
-
+function Events() {
   return (
     <section
       id="events"
-      className="relative overflow-hidden bg-gradient-to-br from-[#f8f6ff] via-white to-[#fff9f0] py-12"
+      className="relative overflow-hidden bg-gradient-to-br from-[#f8f6ff] via-white to-[#fff9f0] py-16"
     >
-      {/* Elementos decorativos de fondo */}
       <div className="absolute top-10 left-10 h-48 w-48 rounded-full bg-gradient-to-br from-[#F59E0B]/10 to-transparent blur-2xl"></div>
       <div className="absolute right-10 bottom-10 h-40 w-40 rounded-full bg-gradient-to-tl from-[#6e4a8d]/10 to-transparent blur-2xl"></div>
 
       <Container className="relative z-10">
         <div className="mx-auto max-w-7xl">
-          {/* Header mejorado */}
-          <div className="mb-16 text-center">
+          <div className="mb-12 text-center">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#F59E0B]/10 to-[#6e4a8d]/10 px-6 py-3">
               <Calendar className="size-5 text-[#6e4a8d]" />
               <span className="text-sm font-medium text-[#6e4a8d]">
@@ -1290,7 +839,6 @@ function EventsSection() {
           </div>
 
           <div className="grid gap-12 lg:grid-cols-2">
-            {/* Eventos */}
             <div className="space-y-8">
               <div className="text-center lg:text-left">
                 <h3 className="font-display mb-2 text-3xl text-[#4f2f70]">
@@ -1302,20 +850,27 @@ function EventsSection() {
               </div>
 
               <div className="space-y-6">
-                {eventos.map((evento, _index) => (
+                {eventsData.map((evento, _index) => (
                   <div
                     key={evento.title}
                     className="relative overflow-hidden rounded-2xl bg-white p-6 shadow-lg"
                   >
-                    {/* Gradiente de fondo sutil */}
                     <div
-                      className={`absolute inset-0 bg-gradient-to-br ${evento.color} opacity-0 transition-opacity duration-300 group-hover:opacity-5`}
+                      className={cn(
+                        "absolute inset-0 bg-gradient-to-br opacity-0 transition-opacity duration-300 group-hover:opacity-5",
+                        evento.color,
+                      )}
                     ></div>
 
                     <div className="relative z-10 flex items-start gap-4">
-                      <div className={`rounded-xl ${evento.bgColor} p-3`}>
+                      <div className={cn("rounded-xl p-3", evento.bgColor)}>
                         <evento.icon
-                          className={`size-6 ${evento.color.replace("from-", "text-").replace("to-", "to-")}`}
+                          className={cn(
+                            "size-6",
+                            evento.color
+                              .replace("from-", "text-")
+                              .replace("to-", "to-"),
+                          )}
                         />
                       </div>
 
@@ -1337,7 +892,6 @@ function EventsSection() {
                       </div>
                     </div>
 
-                    {/* Elemento decorativo inferior */}
                     <div
                       className={`absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r ${evento.color}`}
                     ></div>
@@ -1346,7 +900,6 @@ function EventsSection() {
               </div>
             </div>
 
-            {/* Lugares cercanos */}
             <div className="space-y-8">
               <div className="text-center lg:text-left">
                 <h3 className="font-display mb-2 text-3xl text-[#4f2f70]">
@@ -1358,20 +911,27 @@ function EventsSection() {
               </div>
 
               <div className="space-y-6">
-                {lugares.map((lugar, _index) => (
+                {nearbyDestinationsData.map((lugar, _index) => (
                   <div
                     key={lugar.title}
                     className="relative overflow-hidden rounded-2xl bg-white p-6 shadow-lg"
                   >
-                    {/* Gradiente de fondo sutil */}
                     <div
-                      className={`absolute inset-0 bg-gradient-to-br ${lugar.color} opacity-0 transition-opacity duration-300 group-hover:opacity-5`}
+                      className={cn(
+                        "absolute inset-0 bg-gradient-to-br opacity-0 transition-opacity duration-300 group-hover:opacity-5",
+                        lugar.color,
+                      )}
                     ></div>
 
                     <div className="relative z-10 flex items-start gap-4">
-                      <div className={`rounded-xl ${lugar.bgColor} p-3`}>
+                      <div className={cn("rounded-xl p-3", lugar.bgColor)}>
                         <lugar.icon
-                          className={`size-6 ${lugar.color.replace("from-", "text-").replace("to-", "to-")}`}
+                          className={cn(
+                            "size-6",
+                            lugar.color
+                              .replace("from-", "text-")
+                              .replace("to-", "to-"),
+                          )}
                         />
                       </div>
 
@@ -1388,7 +948,6 @@ function EventsSection() {
                           {lugar.description}
                         </p>
 
-                        {/* Características */}
                         <div className="flex flex-wrap gap-2">
                           {lugar.features.map((feature, i) => (
                             <span
@@ -1402,9 +961,11 @@ function EventsSection() {
                       </div>
                     </div>
 
-                    {/* Elemento decorativo inferior */}
                     <div
-                      className={`absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r ${lugar.color}`}
+                      className={cn(
+                        "absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r",
+                        lugar.color,
+                      )}
                     ></div>
                   </div>
                 ))}
@@ -1412,8 +973,7 @@ function EventsSection() {
             </div>
           </div>
 
-          {/* Call to action */}
-          <div className="mt-16 text-center">
+          <div className="mt-12 text-center">
             <div className="inline-flex items-center gap-3 rounded-2xl bg-gradient-to-r from-[#6e4a8d] to-[#4f2f70] px-8 py-4 text-white shadow-lg transition-all duration-300 hover:shadow-xl">
               <Compass className="size-5" />
               <span className="font-medium">
@@ -1427,11 +987,10 @@ function EventsSection() {
   );
 }
 
-function CTASection() {
+function CTA() {
   return (
     <section id="cta" className="relative overflow-hidden">
-      {/* Background con múltiples capas */}
-      <div className="absolute inset-0 ">
+      <div className="absolute inset-0">
         <Image
           src="https://static-assets-manager.s3.us-east-1.amazonaws.com/Contenedor_navbar_hero_bf4e4d9c2a.png"
           alt="Vista de la costa"
@@ -1441,23 +1000,19 @@ function CTASection() {
           className="size-full object-cover"
         />
 
-        {/* Overlay con gradiente múltiple */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#3f2561]/80 via-[#4f2f70]/70 to-[#6e4a8d]/80" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
       </div>
 
-      {/* Contenido principal */}
       <div className="relative z-10 mx-auto max-w-7xl px-6 py-20 text-center text-white">
-        {/* Badge especial */}
         <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-6 py-3 backdrop-blur-sm">
-          <Zap className="size-4" />
+          <Heart className="size-4" />
           <span className="text-sm font-medium">
-            Oferta Especial • Últimas habitaciones disponibles
+            Experiencia Premium • Tu hogar lejos de casa
           </span>
         </div>
 
-        {/* Título principal con gradiente */}
-        <h2 className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl">
+        <h2 className="font-display text-center text-4xl sm:text-6xl md:text-7xl lg:text-8xl">
           <span className="bg-gradient-to-r from-white via-yellow-100 to-white bg-clip-text text-transparent">
             ¿LISTO PARA
           </span>
@@ -1467,7 +1022,6 @@ function CTASection() {
           </span>
         </h2>
 
-        {/* Subtítulo mejorado */}
         <div className="mx-auto mt-8 max-w-4xl">
           <p className="text-lg leading-relaxed text-white/90 sm:text-xl md:text-2xl">
             Reserva tu escapada costera inolvidable y experimenta el
@@ -1475,56 +1029,6 @@ function CTASection() {
           </p>
         </div>
 
-        {/* Características destacadas con mejor diseño */}
-        <div className="mx-auto mt-12 grid max-w-5xl gap-4 sm:grid-cols-3">
-          <div className="rounded-3xl border border-white/30 bg-white/10 px-8 py-8 backdrop-blur-sm">
-            <div className="mx-auto mb-4 flex size-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[#F59E0B] to-[#f6a92a] text-white shadow-lg">
-              <Calendar className="size-8" />
-            </div>
-            <p className="mb-2 text-lg font-bold">Reserva Fácil</p>
-            <p className="text-sm leading-relaxed opacity-80">
-              Proceso de 3 minutos • Sin complicaciones
-            </p>
-          </div>
-          <div className="rounded-3xl border border-white/30 bg-white/10 px-8 py-8 backdrop-blur-sm">
-            <div className="mx-auto mb-4 flex size-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[#8b6ba8] to-[#6e4a8d] text-white shadow-lg">
-              <Heart className="size-8" />
-            </div>
-            <p className="mb-2 text-lg font-bold">Satisfacción Garantizada</p>
-            <p className="text-sm leading-relaxed opacity-80">
-              100% de huéspedes satisfechos • Excelente atención
-            </p>
-          </div>
-          <div className="rounded-3xl border border-white/30 bg-white/10 px-8 py-8 backdrop-blur-sm">
-            <div className="mx-auto mb-4 flex size-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[#4f2f70] to-[#F59E0B] text-white shadow-lg">
-              <MessageCircle className="size-8" />
-            </div>
-            <p className="mb-2 text-lg font-bold">Soporte 24/7</p>
-            <p className="text-sm leading-relaxed opacity-80">
-              Asistencia durante tu estadía • Siempre disponibles
-            </p>
-          </div>
-        </div>
-
-        {/* Información de disponibilidad */}
-        <div className="mx-auto mt-12 max-w-4xl rounded-3xl border border-white/20 bg-white/5 px-8 py-6 backdrop-blur-sm">
-          <div className="flex flex-wrap items-center justify-center gap-6 text-sm font-medium text-white/90">
-            <div className="flex items-center gap-2">
-              <div className="h-2 w-2 rounded-full bg-[#F59E0B]"></div>
-              <span>Disponibilidad limitada</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="h-2 w-2 rounded-full bg-green-400"></div>
-              <span>Reserva anticipada recomendada</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="h-2 w-2 rounded-full bg-blue-400"></div>
-              <span>Cancelación flexible</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Botones de acción mejorados */}
         <div className="mt-12 flex flex-col items-center justify-center gap-6 sm:flex-row sm:gap-8">
           <Button
             asChild
@@ -1547,27 +1051,461 @@ function CTASection() {
           </Button>
         </div>
 
-        {/* Información de contacto */}
         <div className="mx-auto mt-12 max-w-2xl rounded-2xl bg-white/10 px-8 py-6 backdrop-blur-sm">
           <p className="mb-4 text-sm text-white/80">
             ¿Tienes preguntas? ¡Estamos aquí para ayudarte!
           </p>
           <div className="flex flex-wrap items-center justify-center gap-6 text-sm">
-            <div className="flex items-center gap-2">
-              <Phone className="size-4" />
-              <span>+39 XXX XXX XXXX</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Mail className="size-4" />
-              <span>info@sanvitocamere.com</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Instagram className="size-4" />
-              <span>@sanvitocamere</span>
-            </div>
+            {[
+              {
+                icon: Phone,
+                text: "+39 329 068 9750",
+                href: "tel:+393290689750",
+              },
+              {
+                icon: Mail,
+                text: "centralsanvito@gmail.com",
+                href: "mailto:centralsanvito@gmail.com",
+              },
+            ].map((contact, index) => (
+              <Link
+                key={index}
+                href={contact.href}
+                className="flex items-center gap-2 transition-colors hover:text-[#F59E0B]"
+              >
+                <contact.icon className="size-4" />
+                <span>{contact.text}</span>
+              </Link>
+            ))}
           </div>
         </div>
       </div>
     </section>
   );
 }
+
+function Separator({ className }: { className?: string }) {
+  return (
+    <div className={cn("relative py-8", className)}>
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#6e4a8d]/10 to-transparent"></div>
+      <div className="relative flex items-center justify-center">
+        <div className="flex items-center gap-4">
+          <div className="h-px w-12 bg-gradient-to-r from-transparent to-[#6e4a8d]/30"></div>
+          <div className="flex gap-2">
+            <div className="h-2 w-2 rounded-full bg-[#F59E0B]/40"></div>
+            <div className="h-2 w-2 rounded-full bg-[#6e4a8d]/40"></div>
+            <div className="h-2 w-2 rounded-full bg-[#F59E0B]/40"></div>
+          </div>
+          <div className="h-px w-12 bg-gradient-to-l from-transparent to-[#6e4a8d]/30"></div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const infoSectionFeatures = [
+  {
+    icon: MapPin,
+    text: "Ubicación central: Via Peralta 10 (zona peatonal)",
+    color: "text-[#6e4a8d]",
+    bgColor: "bg-[#f8f6ff]",
+    borderColor: "border-[#d6c6e5]",
+  },
+  {
+    icon: Waves,
+    text: "A dos pasos de la playa",
+    color: "text-[#4f2f70]",
+    bgColor: "bg-[#f0e8ff]",
+    borderColor: "border-[#d6c6e5]",
+  },
+  {
+    icon: Coffee,
+    text: "Cerca de bares, heladerías y restaurantes",
+    color: "text-[#F59E0B]",
+    bgColor: "bg-[#fff9f0]",
+    borderColor: "border-[#fbbf24]",
+  },
+  {
+    icon: Mountain,
+    text: "A minutos de Zingaro y Macari",
+    color: "text-[#8b6ba8]",
+    bgColor: "bg-[#f8f6ff]",
+    borderColor: "border-[#d6c6e5]",
+  },
+  {
+    icon: Bed,
+    text: "3 departamentos disponibles",
+    color: "text-[#6e4a8d]",
+    bgColor: "bg-[#f0e8ff]",
+    borderColor: "border-[#d6c6e5]",
+  },
+];
+
+const suiteMarinaImages = [
+  {
+    src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/DSC_1490_JPG_U_U_fead6845cd.JPG",
+    w: 4016,
+    h: 6016,
+  },
+  {
+    src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/DSC_1492_JPG_U_77e37e6025.JPG",
+    w: 5860,
+    h: 3912,
+  },
+  {
+    src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20250221_092959_df3e0ad1e6.jpg",
+    w: 2322,
+    h: 3098,
+  },
+  {
+    src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20250220_210933_jpg_U_38ef53e24a.jpg",
+    w: 2368,
+    h: 3158,
+  },
+  {
+    src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20250221_093645_59815e13cc.jpg",
+    w: 3208,
+    h: 2406,
+  },
+  {
+    src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20250220_085033_3389836b19.jpg",
+    w: 2448,
+    h: 3264,
+  },
+];
+
+const suiteCentralImages = [
+  {
+    src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/DSC_1453_JPG_U_71c8bfbbed.JPG",
+    w: 4016,
+    h: 6016,
+  },
+  {
+    src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/DSC_1458_JPG_U_U_e7b808886c.JPG",
+    w: 4016,
+    h: 6016,
+  },
+  {
+    src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20250220_211206_jpg_U_1d8af6b45b.jpg",
+    w: 2368,
+    h: 3158,
+  },
+  {
+    src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20250220_210933_jpg_U_f6c95c8bcc.jpg",
+    w: 2368,
+    h: 3158,
+  },
+];
+
+const suitePanoramicaImages = [
+  {
+    src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/DSC_1469_JPG_UU_359b2d73f2.JPG",
+    w: 6016,
+    h: 4016,
+  },
+  {
+    src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/DSC_1483_JPG_U_U_f246bf342c.JPG",
+    w: 3772,
+    h: 5650,
+  },
+  {
+    src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20250220_215738_jpg_U_ddc5ec0156.jpg",
+    w: 3060,
+    h: 4080,
+  },
+  {
+    src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20250220_215317_baf3aa42bf.jpg",
+    w: 2268,
+    h: 3025,
+  },
+  {
+    src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20250220_215254_aafc052913.jpg",
+    w: 3264,
+    h: 2448,
+  },
+  {
+    src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20250220_220012_jpg_U_04940c1888.jpg",
+    w: 2448,
+    h: 3264,
+  },
+  {
+    src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20250220_220449_ce3120f986.jpg",
+    w: 3089,
+    h: 2316,
+  },
+  {
+    src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20250220_215338_jpg_U_05cd241703.jpg",
+    w: 2742,
+    h: 1827,
+  },
+];
+
+const apartmentsData = [
+  {
+    title: "Suite Marina",
+    images: suiteMarinaImages,
+    description: "Amplio departamento con vista al mar",
+    features: ["2 habitaciones", "Cocina completa", "Terraza privada"],
+    color: "from-[#6e4a8d] to-[#4f2f70]",
+  },
+  {
+    title: "Suite Central",
+    images: suiteCentralImages,
+    description: "Perfecto para parejas y familias pequeñas",
+    features: ["1 habitación amplia", "Sala de estar", "Vista a la plaza"],
+    color: "from-[#4f2f70] to-[#8b6ba8]",
+  },
+  {
+    title: "Suite Panorámica",
+    images: suitePanoramicaImages,
+    description: "El más espacioso con vistas espectaculares",
+    features: ["3 habitaciones", "Sala amplia", "Terraza con vista"],
+    color: "from-[#4f2f70] to-[#8b6ba8]",
+  },
+];
+
+const servicesItems = [
+  {
+    icon: Bed,
+    title: "Habitaciones Premium",
+    desc: "Espacios elegantes con baño privado, aire acondicionado y Wi‑Fi de alta velocidad",
+    color: "from-[#6e4a8d] to-[#4f2f70]",
+    bgColor: "bg-[#f8f6ff]",
+    features: ["Cama King Size", "Ropa de cama premium", "Iluminación LED"],
+  },
+  {
+    icon: Eye,
+    title: "Vistas Espectaculares",
+    desc: "Disfruta de vistas panorámicas a la ciudad, mar o montañas desde tu habitación",
+    color: "from-[#6e4a8d] to-[#4f2f70]",
+    bgColor: "bg-[#f8f6ff]",
+    features: ["Ventanas amplias", "Balcón privado", "Persianas automáticas"],
+  },
+  {
+    icon: Waves,
+    title: "A Metros de la Playa",
+    desc: "Tu base perfecta para explorar San Vito Lo Capo y sus alrededores",
+    color: "from-[#F59E0B] to-[#f6a92a]",
+    bgColor: "bg-[#fff9f0]",
+    features: ["5 min caminando", "Toallas incluidas", "Duchas exteriores"],
+  },
+  {
+    icon: Utensils,
+    title: "Cocinas Equipadas",
+    desc: "Dos cocinas completamente equipadas para que cocines como en casa",
+    color: "from-[#F59E0B] to-[#f6a92a]",
+    bgColor: "bg-[#fff9f0]",
+    features: [
+      "Utensilios completos",
+      "Heladeras grandes",
+      "Microondas y horno",
+    ],
+  },
+  {
+    icon: Snowflake,
+    title: "Limpieza Premium",
+    desc: "Servicio de limpieza diario con productos ecológicos y atención personalizada",
+    color: "from-[#4f2f70] to-[#8b6ba8]",
+    bgColor: "bg-[#f0e8ff]",
+    features: ["Limpieza diaria", "Toallas frescas", "Productos ecológicos"],
+  },
+  {
+    icon: Sun,
+    title: "Terraza Panorámica",
+    desc: "Relájate con vistas al Monte Mónaco y al mar Mediterráneo",
+    color: "from-[#F59E0B] to-[#f6a92a]",
+    bgColor: "bg-[#fff9f0]",
+    features: ["Asador incluido", "Mesa exterior", "Iluminación nocturna"],
+  },
+];
+
+const experiencesData = [
+  {
+    icon: Car,
+    title: "Transfer Premium",
+    description: "Transporte cómodo y seguro desde/hacia el aeropuerto",
+    details: "Servicio puerta a puerta con conductor profesional",
+    color: "from-[#6e4a8d] to-[#4f2f70]",
+    bgColor: "bg-[#f8f6ff]",
+    features: ["Aire acondicionado", "Wi-Fi incluido", "Agua fresca"],
+  },
+  {
+    icon: Anchor,
+    title: "Paseos en Barco",
+    description: "Navega por las cristalinas aguas del Mediterráneo",
+    details: "Visita la Reserva del Zingaro y la Tonnara de San Vito",
+    color: "from-[#F59E0B] to-[#f6a92a]",
+    bgColor: "bg-[#fff9f0]",
+    features: ["Equipo de snorkel", "Guía experto", "Paradas para nadar"],
+  },
+  {
+    icon: Waves,
+    title: "Deportes Acuáticos",
+    description: "Descubre la adrenalina del buceo, vela y windsurf",
+    details: "Escuelas certificadas con instructores profesionales",
+    color: "from-[#4f2f70] to-[#8b6ba8]",
+    bgColor: "bg-[#f0e8ff]",
+    features: ["Cursos para todos", "Equipo incluido", "Certificaciones"],
+  },
+  {
+    icon: Mountain,
+    title: "Escalada y Trekking",
+    description: "Conquista las rutas de senderismo más espectaculares",
+    details: "De septiembre a mayo, rutas para todos los niveles",
+    color: "from-[#6e4a8d] to-[#F59E0B]",
+    bgColor: "bg-[#f8f6ff]",
+    features: ["Guías locales", "Picnic incluido", "Vistas panorámicas"],
+  },
+  {
+    icon: Fish,
+    title: "Pesca Organizada",
+    description: "Vive la emoción de la pesca tradicional siciliana",
+    details: "Experiencia completa con equipo y guía profesional",
+    color: "from-[#F59E0B] to-[#f6a92a]",
+    bgColor: "bg-[#fff9f0]",
+    features: ["Equipo completo", "Limpieza incluida", "Recetas tradicionales"],
+  },
+  {
+    icon: Compass,
+    title: "Excursiones Culturales",
+    description: "Descubre los secretos históricos de Sicilia",
+    details: "Visitas guiadas a templos, castillos y pueblos medievales",
+    color: "from-purple-500 to-indigo-500",
+    bgColor: "bg-purple-50",
+    features: ["Guías expertos", "Historia fascinante", "Fotos inolvidables"],
+  },
+];
+
+const localAttractionsData = [
+  {
+    icon: Coffee,
+    title: "Gastronomía Local",
+    description: "Bares, heladerías y restaurantes con sabores únicos",
+    distance: "A 2 minutos",
+  },
+  {
+    icon: Camera,
+    title: "Plaza Santuario",
+    description: "Corazón histórico de San Vito Lo Capo",
+    distance: "A 3 minutos",
+  },
+  {
+    icon: Bike,
+    title: "Alquiler de Bicis",
+    description: "Recorre la costa en bicicleta",
+    distance: "A 5 minutos",
+  },
+  {
+    icon: ShoppingBag,
+    title: "Compras Locales",
+    description: "Artesanías, souvenirs y productos típicos",
+    distance: "A 1 minuto",
+  },
+];
+
+const cityImagesData = [
+  {
+    src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20240417_224229_bd7cc53123.jpg",
+    w: 2875,
+    h: 4020,
+  },
+  {
+    src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/DSC_1377_6b65a24025.JPG",
+    w: 5528,
+    h: 3685,
+  },
+  {
+    src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20250220_111429_917b6a0da1.jpg",
+    w: 3910,
+    h: 2607,
+  },
+  {
+    src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20240415_200831_966f0a0014.jpg",
+    w: 3948,
+    h: 2960,
+  },
+  {
+    src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20250220_112404_bd327f5f38.jpg",
+    w: 3098,
+    h: 2322,
+  },
+];
+
+const eventsData = [
+  {
+    title: "Cous Cous Fest",
+    date: "Septiembre",
+    description: "El festival gastronómico más importante de Sicilia",
+    icon: Utensils,
+    color: "from-[#F59E0B] to-[#f6a92a]",
+    bgColor: "bg-[#fff9f0]",
+    details: "Degusta el mejor couscous del mundo con chefs internacionales",
+  },
+  {
+    title: "Festival de los Barriletes",
+    date: "Mayo",
+    icon: Wind,
+    color: "from-[#6e4a8d] to-[#4f2f70]",
+    bgColor: "bg-[#f0e8ff]",
+    details: "Espectáculo único de barriletes gigantes en la playa",
+  },
+  {
+    title: "Fiesta de San Vito",
+    date: "Junio",
+    icon: Star,
+    color: "from-[#4f2f70] to-[#8b6ba8]",
+    bgColor: "bg-[#f0e8ff]",
+    details: "Celebración patronal con procesiones y fuegos artificiales",
+  },
+  {
+    title: "Noche de las Estrellas",
+    date: "Agosto",
+    icon: Moon,
+    color: "from-[#8b6ba8] to-[#6e4a8d]",
+    bgColor: "bg-[#f8f6ff]",
+    details: "Observación astronómica y eventos culturales nocturnos",
+  },
+];
+
+const nearbyDestinationsData = [
+  {
+    title: "Parque de Segesta",
+    description: "Templo dórico y anfiteatro griego del siglo V a.C.",
+    distance: "45 min",
+    icon: Camera,
+    color: "from-[#6e4a8d] to-[#F59E0B]",
+    bgColor: "bg-[#f8f6ff]",
+    features: ["Templo griego", "Anfiteatro", "Vistas panorámicas"],
+  },
+  {
+    title: "Erice Medieval",
+    description: "Pueblo medieval con castillos y vistas al mar",
+    distance: "1.5 horas",
+    icon: Castle,
+    color: "from-[#8b6ba8] to-[#6e4a8d]",
+    bgColor: "bg-[#f0e8ff]",
+    features: [
+      "Castillo normando",
+      "Murallas antiguas",
+      "Heladerías artesanales",
+    ],
+  },
+  {
+    title: "Trapani Histórico",
+    description: "Ciudad con arquitectura barroca y puerto pesquero",
+    distance: "1 hora",
+    icon: Building,
+    color: "from-[#4f2f70] to-[#8b6ba8]",
+    bgColor: "bg-[#f8f6ff]",
+    features: ["Puerto antiguo", "Palacios barrocos", "Mercado de pescado"],
+  },
+  {
+    title: "Reserva Zingaro",
+    description: "Parque natural con calas cristalinas y senderos",
+    distance: "30 min",
+    icon: Mountain,
+    color: "from-[#F59E0B] to-[#f6a92a]",
+    bgColor: "bg-[#fff9f0]",
+    features: ["Calas vírgenes", "Senderos", "Observación de aves"],
+  },
+];
