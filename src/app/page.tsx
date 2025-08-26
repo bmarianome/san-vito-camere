@@ -68,7 +68,7 @@ function Hero() {
   return (
     <section
       id="hero"
-      className="relative isolate lg:h-svh overflow-hidden flex flex-col"
+      className="relative isolate flex h-svh flex-col overflow-hidden"
     >
       <div className="absolute inset-0 -z-10">
         <Image
@@ -84,7 +84,7 @@ function Hero() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
       </div>
 
-      <div className="relative mt-[76px] z-10 mx-auto flex grow max-w-7xl flex-col items-center justify-center px-6 text-center text-white">
+      <div className="relative z-10 mx-auto mt-[68px] flex max-w-7xl grow flex-col items-center justify-center px-6 text-center text-white lg:mt-[76px]">
         <div className="mb-6 rounded-full border border-white/30 bg-white/10 px-6 py-2 backdrop-blur-sm">
           <div className="flex items-center gap-2 text-sm font-medium text-white/90">
             <Award className="size-4" />
