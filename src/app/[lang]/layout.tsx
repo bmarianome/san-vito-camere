@@ -4,6 +4,7 @@ import { type Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { Toaster } from "@/components/ui/sonner";
 import { i18n } from "i18n.config";
 
 export const metadata: Metadata = {
@@ -38,6 +39,7 @@ export default async function RootLayout({
         <Header lang={lang as Locale} />
         {children}
         <Footer lang={lang as Locale} />
+        <Toaster />
       </body>
     </html>
   );

@@ -9,6 +9,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import Container from "@/components/Container";
+import BookingDialog from "@/components/BookingDialog";
 import { cn } from "@/lib/utils";
 
 import {
@@ -290,14 +291,14 @@ function Info({ lang }: { lang: Locale }) {
         alt={texts.imageAlt.left[lang]}
         width={329}
         height={639}
-        className="pointer-events-none absolute top-1/2 right-0 -translate-y-1/2 opacity-20"
+        className="pointer-events-none absolute top-1/2 right-0 -translate-y-1/2 opacity-75"
       />
       <Image
         src="https://static-assets-manager.s3.us-east-1.amazonaws.com/image_1_removebg_preview_3d6f2508ea.png"
         alt={texts.imageAlt.right[lang]}
         width={329}
         height={639}
-        className="pointer-events-none absolute top-1/2 left-0 -translate-y-1/2 rotate-180 opacity-20"
+        className="pointer-events-none absolute top-1/2 left-0 -translate-y-1/2 rotate-180 opacity-75"
       />
 
       <Container className="relative z-10">
@@ -563,7 +564,7 @@ function Apartments({ lang }: { lang: Locale }) {
                   >
                     <Link
                       href="#cta"
-                      className="flex items-center justify-center gap-2"
+                      className="flex items-center justify-center gap-2 mt-auto"
                     >
                       <Calendar className="size-4 transition-transform group-hover/btn:scale-110" />
                       {texts.bookNow[lang]}
@@ -1437,15 +1438,12 @@ function CTA({ lang }: { lang: Locale }) {
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-8">
-          <Button
-            asChild
-            className="group hover:shadow-3xl w-full rounded-3xl bg-gradient-to-r from-[#F59E0B] to-[#f6a92a] px-12 py-6 text-xl font-bold text-white shadow-2xl transition-all duration-500 hover:scale-110 hover:from-[#f6a92a] hover:to-[#F59E0B] sm:w-auto"
-          >
-            <Link href="#" className="flex items-center gap-3">
+          <BookingDialog lang={lang}>
+            <Button className="cursor-pointer group hover:shadow-3xl w-full rounded-3xl bg-gradient-to-r from-[#F59E0B] to-[#f6a92a] px-12 py-6 text-xl font-bold text-white shadow-2xl transition-all duration-500 hover:scale-110 hover:from-[#f6a92a] hover:to-[#F59E0B] sm:w-auto">
               <Phone className="size-6 transition-transform group-hover:rotate-12" />
               {texts.buttons.bookNow[lang]}
-            </Link>
-          </Button>
+            </Button>
+          </BookingDialog>
 
           <Button
             asChild
