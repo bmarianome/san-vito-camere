@@ -564,7 +564,7 @@ function Apartments({ lang }: { lang: Locale }) {
                   >
                     <Link
                       href="#cta"
-                      className="flex items-center justify-center gap-2 mt-auto"
+                      className="mt-auto flex items-center justify-center gap-2"
                     >
                       <Calendar className="size-4 transition-transform group-hover/btn:scale-110" />
                       {texts.bookNow[lang]}
@@ -1439,7 +1439,7 @@ function CTA({ lang }: { lang: Locale }) {
 
         <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-8">
           <BookingDialog lang={lang}>
-            <Button className="cursor-pointer group hover:shadow-3xl w-full rounded-3xl bg-gradient-to-r from-[#F59E0B] to-[#f6a92a] px-12 py-6 text-xl font-bold text-white shadow-2xl transition-all duration-500 hover:scale-110 hover:from-[#f6a92a] hover:to-[#F59E0B] sm:w-auto">
+            <Button className="group hover:shadow-3xl w-full cursor-pointer rounded-3xl bg-gradient-to-r from-[#F59E0B] to-[#f6a92a] px-12 py-6 text-xl font-bold text-white shadow-2xl transition-all duration-500 hover:scale-110 hover:from-[#f6a92a] hover:to-[#F59E0B] sm:w-auto">
               <Phone className="size-6 transition-transform group-hover:rotate-12" />
               {texts.buttons.bookNow[lang]}
             </Button>

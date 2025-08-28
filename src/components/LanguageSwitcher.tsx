@@ -18,7 +18,10 @@ interface LanguageSwitcherProps {
   scrolled?: boolean;
 }
 
-export default function LanguageSwitcher({ className, scrolled = false }: LanguageSwitcherProps) {
+export default function LanguageSwitcher({
+  className,
+  scrolled = false,
+}: LanguageSwitcherProps) {
   const pathname = usePathname();
 
   const redirectedPathName = (locale: string) => {
@@ -32,23 +35,25 @@ export default function LanguageSwitcher({ className, scrolled = false }: Langua
     if (!pathname) return i18n.defaultLocale as Locale;
     const segments = pathname.split("/");
     const localeFromPath = segments[1] as Locale;
-    return i18n.locales.includes(localeFromPath) ? localeFromPath : (i18n.defaultLocale as Locale);
+    return i18n.locales.includes(localeFromPath)
+      ? localeFromPath
+      : (i18n.defaultLocale as Locale);
   };
 
   const currentLocale = getCurrentLocale();
 
   const texts = {
     current: {
-      en: "English",
-      de: "Deutsch",
-      it: "Italiano",
-      sk: "Slovenčina",
+      en: "🇬🇧 English",
+      de: "🇩🇪 Deutsch",
+      it: "🇮🇹 Italiano",
+      sk: "🇸🇰 Slovenčina",
     },
     available: [
-      { code: "en", label: "English" },
-      { code: "de", label: "Deutsch" },
-      { code: "it", label: "Italiano" },
-      { code: "sk", label: "Slovenčina" },
+      { code: "en", label: "🇬🇧 English" },
+      { code: "de", label: "🇩🇪 Deutsch" },
+      { code: "it", label: "🇮🇹 Italiano" },
+      { code: "sk", label: "🇸🇰 Slovenčina" },
     ],
   };
 
@@ -65,7 +70,7 @@ export default function LanguageSwitcher({ className, scrolled = false }: Langua
               : "border-white/30 bg-white/10 text-white",
           )}
         >
-          <Globe className="mr-2" /> {texts.current[currentLocale]}
+          <Globe className="mr-1" /> {texts.current[currentLocale]}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
@@ -76,7 +81,7 @@ export default function LanguageSwitcher({ className, scrolled = false }: Langua
               scroll={false}
               className={cn(
                 "w-full cursor-pointer",
-                currentLocale === language.code && "bg-accent"
+                currentLocale === language.code && "bg-accent",
               )}
             >
               {language.label}

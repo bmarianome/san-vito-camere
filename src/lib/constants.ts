@@ -19,8 +19,17 @@ export const bookingSchema = z.object({
   }),
   adults: z.number().min(1, "Debe haber al menos 1 adulto").max(10),
   minors: z.number().min(0).max(6),
-  checkIn: z.string().min(1, "Fecha de entrada requerida"),
-  checkOut: z.string().min(1, "Fecha de salida requerida"),
+  dateRange: z
+    .object({
+      from: z.date(),
+      to: z.date(),
+    })
+    .refine((data) => data.from && data.to, {
+      message: "Por favor selecciona fechas de check-in y check-out",
+    })
+    .refine((data) => data.to > data.from, {
+      message: "La fecha de check-out debe ser posterior al check-in",
+    }),
   receipt: z
     .instanceof(File)
     .refine((file) => file.size <= MAX_FILE_SIZE, "El archivo es muy grande")

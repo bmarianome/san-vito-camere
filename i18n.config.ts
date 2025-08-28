@@ -6,5 +6,3 @@ export const i18n = {
 declare global {
   type Locale = (typeof i18n)["locales"][number];
 }
-
-
