@@ -52,8 +52,7 @@ function htmlContent(
     apartment,
     adults,
     minors: children,
-    checkIn,
-    checkOut,
+    dateRange,
     comments,
     totalPrice,
     lang,
@@ -207,11 +206,11 @@ function htmlContent(
           </div>
           <div class="info-item">
             <strong>${texts.checkIn}</strong>
-            <span>${new Date(checkIn).toLocaleDateString()}</span>
+            <span>${new Date(dateRange.from).toLocaleDateString()}</span>
           </div>
           <div class="info-item">
             <strong>${texts.checkOut}</strong>
-            <span>${new Date(checkOut).toLocaleDateString()}</span>
+            <span>${new Date(dateRange.to).toLocaleDateString()}</span>
           </div>
         </div>
         
