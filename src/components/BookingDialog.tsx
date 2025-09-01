@@ -280,6 +280,128 @@ const getTexts = (lang: Locale) => ({
     it: "Passaggio {current} di {total}",
     sk: "Krok {current} z {total}",
   }[lang],
+  // Error messages
+  errorSelectApartment: {
+    en: "Please select an apartment to continue",
+    de: "Bitte wählen Sie ein Apartment, um fortzufahren",
+    it: "Per favore seleziona un appartamento per continuare",
+    sk: "Prosím, vyberte apartmán na pokračovanie",
+  }[lang],
+  errorSelectDates: {
+    en: "Please select check-in and check-out dates",
+    de: "Bitte wählen Sie An- und Abreisedaten",
+    it: "Per favore seleziona le date di check-in e check-out",
+    sk: "Prosím, vyberte dátumy príchodu a odchodu",
+  }[lang],
+  errorMinimumDays: {
+    en: "The reservation must be for a minimum of 3 days. Please select dates with at least 3 days difference.",
+    de: "Die Reservierung muss mindestens 3 Tage betragen. Bitte wählen Sie Daten mit mindestens 3 Tagen Unterschied.",
+    it: "La prenotazione deve essere di minimo 3 giorni. Per favore seleziona date con almeno 3 giorni di differenza.",
+    sk: "Rezervácia musí byť na minimálne 3 dni. Prosím, vyberte dátumy s rozdielom najmenej 3 dní.",
+  }[lang],
+  // Form labels and placeholders
+  selectApartment: {
+    en: "Select an apartment",
+    de: "Apartment auswählen",
+    it: "Seleziona un appartamento",
+    sk: "Vyberte apartmán",
+  }[lang],
+  selectQuantity: {
+    en: "Select quantity",
+    de: "Anzahl auswählen",
+    it: "Seleziona quantità",
+    sk: "Vyberte množstvo",
+  }[lang],
+  stayDates: {
+    en: "Stay Dates",
+    de: "Aufenthaltsdaten",
+    it: "Date di Soggiorno",
+    sk: "Dátumy pobytu",
+  }[lang],
+  selectCheckInOut: {
+    en: "Select check-in and check-out dates",
+    de: "An- und Abreisedatum auswählen",
+    it: "Seleziona date di check-in e check-out",
+    sk: "Vyberte dátumy príchodu a odchodu",
+  }[lang],
+  minimumStayNotice: {
+    en: "Select your check-in and check-out dates. Minimum 3 days stay.",
+    de: "Wählen Sie Ihre An- und Abreisedaten. Mindestens 3 Tage Aufenthalt.",
+    it: "Seleziona le tue date di check-in e check-out. Minimo 3 giorni di soggiorno.",
+    sk: "Vyberte si dátumy príchodu a odchodu. Minimálne 3 dni pobytu.",
+  }[lang],
+  stay: {
+    en: "Stay",
+    de: "Aufenthalt",
+    it: "Soggiorno",
+    sk: "Pobyt",
+  }[lang],
+  day: {
+    en: "day",
+    de: "Tag",
+    it: "giorno",
+    sk: "deň",
+  }[lang],
+  days: {
+    en: "days",
+    de: "Tage",
+    it: "giorni",
+    sk: "dni",
+  }[lang],
+  basePriceAllAdults: {
+    en: "Base price (all adults)",
+    de: "Grundpreis (alle Erwachsenen)",
+    it: "Prezzo base (tutti gli adulti)",
+    sk: "Základná cena (všetci dospelí)",
+  }[lang],
+  subtotalPerDay: {
+    en: "Subtotal per day",
+    de: "Zwischensumme pro Tag",
+    it: "Subtotale per giorno",
+    sk: "Medzisúčet za deň",
+  }[lang],
+  total: {
+    en: "Total",
+    de: "Gesamt",
+    it: "Totale",
+    sk: "Celkom",
+  }[lang],
+  paymentInstructionsTitle: {
+    en: "Payment Instructions",
+    de: "Zahlungsanweisungen",
+    it: "Istruzioni di Pagamento",
+    sk: "Platobné pokyny",
+  }[lang],
+  bookingSummary: {
+    en: "Booking Summary",
+    de: "Buchungsübersicht",
+    it: "Riepilogo Prenotazione",
+    sk: "Zhrnutie rezervácie",
+  }[lang],
+  guests: {
+    en: "Guests",
+    de: "Gäste",
+    it: "Ospiti",
+    sk: "Hostia",
+  }[lang],
+  adultsLabel: {
+    en: "adults",
+    de: "Erwachsene",
+    it: "adulti",
+    sk: "dospelí",
+  }[lang],
+  childrenLabel: {
+    en: "children",
+    de: "Kinder",
+    it: "bambini",
+    sk: "deti",
+  }[lang],
+  cancel: {
+    en: "Cancel",
+    de: "Abbrechen",
+    it: "Annulla",
+    sk: "Zrušiť",
+  }[lang],
 });
 
 export default function BookingDialog({
@@ -320,9 +442,9 @@ export default function BookingDialog({
   const checkOut = dateRange?.to;
 
   const calculateDays = () => {
-    if (!checkIn || !checkOut) return 1;
+    if (!checkIn || !checkOut) return 3;
     const days = differenceInDays(checkOut, checkIn);
-    return Math.max(1, days); // Mínimo 1 día
+    return Math.max(3, days); // Mínimo 3 días
   };
 
   const numberOfDays = calculateDays();
@@ -330,29 +452,36 @@ export default function BookingDialog({
   const calculatePrice = () => {
     if (!selectedApartment) return 0;
     const prices = apartmentPrices[selectedApartment];
-    const additionalAdults = Math.max(0, adults - 1); // First adult included in base
-    const pricePerDay =
-      prices.base +
-      additionalAdults * prices.perAdult +
-      minors * prices.perChild;
+    // Price is fixed base rate (100€) regardless of adults + 30€ per child
+    const pricePerDay = prices.base + minors * prices.perChild;
     return pricePerDay * numberOfDays;
   };
 
   const totalPrice = calculatePrice();
 
-  const validateStep1 = () => {
-    const apartmentValue = form.getValues("apartment");
-    const dateRangeValue = form.getValues("dateRange");
-
-    return apartmentValue && dateRangeValue?.from && dateRangeValue?.to;
-  };
-
   const handleNextStep = () => {
     if (currentStep === 1) {
-      if (!validateStep1()) {
-        toast.error(
-          "Por favor completa todos los campos requeridos para continuar",
-        );
+      const apartmentValue = form.getValues("apartment");
+      const dateRangeValue = form.getValues("dateRange");
+
+      // Check what's missing and show specific error
+      if (!apartmentValue) {
+        toast.error(texts.errorSelectApartment);
+        return;
+      }
+
+      if (!dateRangeValue?.from || !dateRangeValue?.to) {
+        toast.error(texts.errorSelectDates);
+        return;
+      }
+
+      // Check minimum days requirement
+      const diffInMs =
+        dateRangeValue.to.getTime() - dateRangeValue.from.getTime();
+      const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
+
+      if (diffInDays < 3) {
+        toast.error(texts.errorMinimumDays);
         return;
       }
     }
@@ -473,7 +602,9 @@ export default function BookingDialog({
                         >
                           <FormControl>
                             <SelectTrigger>
-                              <SelectValue placeholder="Selecciona un apartamento" />
+                              <SelectValue
+                                placeholder={texts.selectApartment}
+                              />
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent>
@@ -508,7 +639,9 @@ export default function BookingDialog({
                           >
                             <FormControl>
                               <SelectTrigger>
-                                <SelectValue placeholder="Selecciona cantidad" />
+                                <SelectValue
+                                  placeholder={texts.selectQuantity}
+                                />
                               </SelectTrigger>
                             </FormControl>
                             <SelectContent>
@@ -538,7 +671,9 @@ export default function BookingDialog({
                           >
                             <FormControl>
                               <SelectTrigger>
-                                <SelectValue placeholder="Selecciona cantidad" />
+                                <SelectValue
+                                  placeholder={texts.selectQuantity}
+                                />
                               </SelectTrigger>
                             </FormControl>
                             <SelectContent>
@@ -560,7 +695,7 @@ export default function BookingDialog({
                     name="dateRange"
                     render={({ field }) => (
                       <FormItem className="flex flex-col">
-                        <FormLabel>Fechas de Estancia</FormLabel>
+                        <FormLabel>{texts.stayDates}</FormLabel>
                         <Popover>
                           <PopoverTrigger asChild>
                             <FormControl>
@@ -588,9 +723,7 @@ export default function BookingDialog({
                                     })
                                   )
                                 ) : (
-                                  <span>
-                                    Selecciona fechas de check-in y check-out
-                                  </span>
+                                  <span>{texts.selectCheckInOut}</span>
                                 )}
                                 <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                               </Button>
@@ -613,7 +746,7 @@ export default function BookingDialog({
                         </Popover>
                         <FormMessage />
                         <div className="text-muted-foreground text-xs">
-                          Selecciona tu fecha de check-in y check-out
+                          {texts.minimumStayNotice}
                         </div>
                       </FormItem>
                     )}
@@ -630,36 +763,25 @@ export default function BookingDialog({
                       <div className="space-y-2 text-sm">
                         {checkIn && checkOut && (
                           <div className="flex justify-between">
-                            <span className="text-[#6e4a8d]/70">Estancia:</span>
+                            <span className="text-[#6e4a8d]/70">
+                              {texts.stay}:
+                            </span>
                             <span className="font-medium">
                               {numberOfDays}{" "}
-                              {numberOfDays === 1 ? "día" : "días"}
+                              {numberOfDays === 1 ? texts.day : texts.days}
                             </span>
                           </div>
                         )}
 
                         <div className="flex justify-between">
                           <span className="text-[#6e4a8d]/70">
-                            {texts.basePrice}:
+                            {texts.basePriceAllAdults}:
                           </span>
                           <span className="font-medium">
-                            €{apartmentPrices[selectedApartment].base}/día
+                            €{apartmentPrices[selectedApartment].base}/
+                            {texts.day}
                           </span>
                         </div>
-
-                        {adults > 1 && (
-                          <div className="flex justify-between">
-                            <span className="text-[#6e4a8d]/70">
-                              {texts.adultPrice} ({adults - 1}):
-                            </span>
-                            <span className="font-medium">
-                              €
-                              {(adults - 1) *
-                                apartmentPrices[selectedApartment].perAdult}
-                              /día
-                            </span>
-                          </div>
-                        )}
 
                         {minors > 0 && (
                           <div className="flex justify-between">
@@ -670,7 +792,7 @@ export default function BookingDialog({
                               €
                               {minors *
                                 apartmentPrices[selectedApartment].perChild}
-                              /día
+                              /{texts.day}
                             </span>
                           </div>
                         )}
@@ -678,7 +800,7 @@ export default function BookingDialog({
                         <div className="border-t border-[#6e4a8d]/20 pt-2">
                           <div className="flex justify-between">
                             <span className="text-[#6e4a8d]/70">
-                              Subtotal por día:
+                              {texts.subtotalPerDay}:
                             </span>
                             <span className="font-medium">
                               €
@@ -687,7 +809,7 @@ export default function BookingDialog({
                             </span>
                           </div>
                           <div className="flex justify-between text-lg font-bold text-[#6e4a8d]">
-                            <span>Total:</span>
+                            <span>{texts.total}:</span>
                             <span>€{totalPrice}</span>
                           </div>
                         </div>
@@ -702,7 +824,7 @@ export default function BookingDialog({
                         <AlertCircle className="mt-0.5 size-5 shrink-0 text-amber-600" />
                         <div className="text-sm text-amber-800">
                           <p className="mb-1 font-medium">
-                            Instrucciones de Pago
+                            {texts.paymentInstructionsTitle}
                           </p>
                           <p>{texts.paymentInstructions}</p>
                         </div>
@@ -840,49 +962,58 @@ export default function BookingDialog({
                   <div className="rounded-lg border border-[#6e4a8d]/20 bg-gradient-to-br from-[#f8f6ff] to-white p-6">
                     <h3 className="mb-4 flex items-center gap-2 text-lg font-semibold text-[#6e4a8d]">
                       <FileText className="size-5" />
-                      Resumen de la Reserva
+                      {texts.bookingSummary}
                     </h3>
                     <div className="space-y-2 text-sm">
                       <div className="flex justify-between">
-                        <span className="text-[#6e4a8d]/70">Apartamento:</span>
+                        <span className="text-[#6e4a8d]/70">
+                          {texts.apartment}:
+                        </span>
                         <span className="font-medium">
                           {texts.apartmentOptions[selectedApartment]}
                         </span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-[#6e4a8d]/70">Huéspedes:</span>
+                        <span className="text-[#6e4a8d]/70">
+                          {texts.guests}:
+                        </span>
                         <span className="font-medium">
-                          {adults} adultos{minors > 0 && `, ${minors} niños`}
+                          {adults} {texts.adultsLabel}
+                          {minors > 0 && `, ${minors} ${texts.childrenLabel}`}
                         </span>
                       </div>
                       {checkIn && checkOut && (
                         <>
                           <div className="flex justify-between">
-                            <span className="text-[#6e4a8d]/70">Check-in:</span>
+                            <span className="text-[#6e4a8d]/70">
+                              {texts.checkIn}:
+                            </span>
                             <span className="font-medium">
                               {format(checkIn, "PPP", { locale: es })}
                             </span>
                           </div>
                           <div className="flex justify-between">
                             <span className="text-[#6e4a8d]/70">
-                              Check-out:
+                              {texts.checkOut}:
                             </span>
                             <span className="font-medium">
                               {format(checkOut, "PPP", { locale: es })}
                             </span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-[#6e4a8d]/70">Estancia:</span>
+                            <span className="text-[#6e4a8d]/70">
+                              {texts.stay}:
+                            </span>
                             <span className="font-medium">
                               {numberOfDays}{" "}
-                              {numberOfDays === 1 ? "día" : "días"}
+                              {numberOfDays === 1 ? texts.day : texts.days}
                             </span>
                           </div>
                         </>
                       )}
                       <div className="border-t border-[#6e4a8d]/20 pt-2">
                         <div className="flex justify-between text-lg font-bold text-[#6e4a8d]">
-                          <span>Total:</span>
+                          <span>{texts.total}:</span>
                           <span>€{totalPrice}</span>
                         </div>
                       </div>
@@ -901,7 +1032,7 @@ export default function BookingDialog({
                   onClick={() => setOpen(false)}
                   disabled={isSubmitting}
                 >
-                  Cancelar
+                  {texts.cancel}
                 </Button>
               ) : (
                 <Button

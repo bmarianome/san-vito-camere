@@ -10,10 +10,10 @@ export default function Footer({ lang }: { lang: Locale }) {
       sk: "Kde sa oceán stretáva s luxusom. Váš dokonalý domov v srdci San Vito Lo Capo.",
     },
     experience: {
-      en: "Premium B2B Experience",
-      de: "Premium B2B Erfahrung",
-      it: "Esperienza Premium B2B",
-      sk: "Prémiový B2B zážitok",
+      en: "Premium B&B Experience",
+      de: "Premium B&B Erfahrung",
+      it: "Esperienza Premium B&B",
+      sk: "Prémiový B&B zážitok",
     },
     navigation: {
       explore: {

@@ -74,16 +74,16 @@ export default async function HomePage({
 function Hero({ lang }: { lang: Locale }) {
   const texts = {
     badge: {
-      en: "Premium B2B Experience",
-      de: "Premium B2B Erfahrung",
-      it: "Esperienza Premium B2B",
-      sk: "Prémiový B2B zážitok",
+      en: "Premium B&B Experience",
+      de: "Premium B&B Erfahrung",
+      it: "Esperienza Premium B&B",
+      sk: "Prémiový B&B zážitok",
     },
     description: {
-      en: "B2B Central with 3 apartments for your dream stay in",
-      de: "B2B Central mit 3 Apartments für Ihren Traumaufenthalt in",
-      it: "B2B Central con 3 appartamenti per il tuo soggiorno da sogno a",
-      sk: "B2B Central s 3 apartmánmi pre váš vysnívaný pobyt v",
+      en: "B&B Central with 3 apartments for your dream stay in",
+      de: "B&B Central mit 3 Apartments für Ihren Traumaufenthalt in",
+      it: "B&B Central con 3 appartamenti per il tuo soggiorno da sogno a",
+      sk: "B&B Central s 3 apartmánmi pre váš vysnívaný pobyt v",
     },
     features: {
       historicCenter: {
@@ -245,10 +245,10 @@ function Info({ lang }: { lang: Locale }) {
       sk: "Náš B&B sa nachádza v centre San Vito Lo Capo, dva kroky od pláže a v blízkosti rezervácií Zingaro a Macari. Poloha je kľúčová: Via Peralta n.10, výlučne pešia zóna.",
     },
     mainText: {
-      en: "Three apartments within B2B Central, ready for you to enjoy San Vito with comfort and style.",
-      de: "Drei Apartments innerhalb von B2B Central, bereit für Sie, San Vito mit Komfort und Stil zu genießen.",
-      it: "Tre appartamenti all'interno di B2B Central, pronti per farti godere San Vito con comfort e stile.",
-      sk: "Tri apartmány v rámci B2B Central, pripravené na to, aby ste si užili San Vito s pohodlím a štýlom.",
+      en: "Three apartments within B&B Central, ready for you to enjoy San Vito with comfort and style.",
+      de: "Drei Apartments innerhalb von B&B Central, bereit für Sie, San Vito mit Komfort und Stil zu genießen.",
+      it: "Tre appartamenti all'interno di B&B Central, pronti per farti godere San Vito con comfort e stile.",
+      sk: "Tri apartmány v rámci B&B Central, pripravené na to, aby ste si užili San Vito s pohodlím a štýlom.",
     },
     reviews: {
       en: "(+500 reviews)",
@@ -522,8 +522,8 @@ function Apartments({ lang }: { lang: Locale }) {
                         </CarouselItem>
                       ))}
                     </CarouselContent>
-                    <CarouselPrevious className="left-4 cursor-pointer bg-white/90 text-[#6e4a8d] shadow-lg hover:bg-white" />
-                    <CarouselNext className="right-4 cursor-pointer bg-white/90 text-[#6e4a8d] shadow-lg hover:bg-white" />
+                    <CarouselPrevious className="left-4 z-10 cursor-pointer bg-white/90 text-[#6e4a8d] shadow-lg hover:bg-white" />
+                    <CarouselNext className="right-4 z-10 cursor-pointer bg-white/90 text-[#6e4a8d] shadow-lg hover:bg-white" />
 
                     <div className="absolute right-4 bottom-4 rounded-full bg-black/50 px-3 py-1 text-xs text-white backdrop-blur-sm">
                       {apto.images.length} {texts.photos[lang]}
@@ -1444,16 +1444,6 @@ function CTA({ lang }: { lang: Locale }) {
               {texts.buttons.bookNow[lang]}
             </Button>
           </BookingDialog>
-
-          <Button
-            asChild
-            className="group w-full rounded-3xl border-2 border-white/40 bg-white/10 px-12 py-6 text-xl font-bold text-white backdrop-blur-sm transition-all duration-500 hover:scale-110 hover:border-white/60 hover:bg-white/20 sm:w-auto"
-          >
-            <Link href="#" className="flex items-center gap-3">
-              <Eye className="size-6 transition-transform group-hover:scale-110" />
-              {texts.buttons.checkAvailability[lang]}
-            </Link>
-          </Button>
         </div>
 
         <div className="mx-auto mt-12 max-w-2xl rounded-2xl bg-white/10 px-8 py-6 backdrop-blur-sm">

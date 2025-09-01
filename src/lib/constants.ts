@@ -29,7 +29,18 @@ export const bookingSchema = z.object({
     })
     .refine((data) => data.to > data.from, {
       message: "La fecha de check-out debe ser posterior al check-in",
-    }),
+    })
+    .refine(
+      (data) => {
+        if (!data.from || !data.to) return true;
+        const diffInMs = data.to.getTime() - data.from.getTime();
+        const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
+        return diffInDays >= 3;
+      },
+      {
+        message: "La reserva debe ser de mínimo 3 días",
+      },
+    ),
   receipt: z
     .instanceof(File)
     .refine((file) => file.size <= MAX_FILE_SIZE, "El archivo es muy grande")
@@ -151,7 +162,7 @@ export const apartmentPrices: Record<
     perChild: number;
   }
 > = {
-  marina: { base: 120, perAdult: 25, perChild: 15 },
-  central: { base: 100, perAdult: 20, perChild: 12 },
-  panoramic: { base: 150, perAdult: 30, perChild: 18 },
+  marina: { base: 100, perAdult: 0, perChild: 30 },
+  central: { base: 100, perAdult: 0, perChild: 30 },
+  panoramic: { base: 100, perAdult: 0, perChild: 30 },
 };
