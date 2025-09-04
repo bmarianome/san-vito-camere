@@ -989,10 +989,6 @@ function Experiences({ lang }: { lang: Locale }) {
                     )}
                   ></div>
                 </div>
-
-                <div className="absolute -top-2 right-6 rounded-full bg-gradient-to-r from-[#F59E0B] to-[#f6a92a] px-3 py-1 text-xs font-bold text-white shadow-sm">
-                  Desde €25
-                </div>
               </div>
             ))}
           </div>
