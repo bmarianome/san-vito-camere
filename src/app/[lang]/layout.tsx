@@ -7,13 +7,6 @@ import Footer from "@/components/Footer";
 import { Toaster } from "@/components/ui/sonner";
 import { i18n } from "i18n.config";
 
-export const metadata: Metadata = {
-  title: "B&B Central",
-  description: "Alojamiento frente al mar - Landing",
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
-  metadataBase: new URL("https://centralsanvito.it/"),
-};
-
 const montserrat = Montserrat({
   subsets: ["latin"],
   display: "swap",
@@ -57,7 +50,17 @@ export async function generateMetadata({
     ["x-default", `/${i18n.defaultLocale}`] as const,
   ]);
 
+  const descriptions = {
+    en: "B&B Central with 3 apartments for your dream stay in San Vito Lo Capo",
+    de: "B&B Central mit 3 Apartments für Ihren Traumaufenthalt in San Vito Lo Capo",
+    it: "B&B Central con 3 appartamenti per il tuo soggiorno da sogno a San Vito Lo Capo",
+    sk: "B&B Central s 3 apartmánmi pre váš vysnívaný pobyt v San Vito Lo Capo",
+  };
+
   return {
+    title: "B&B Central",
+    description: descriptions[lang],
+    icons: [{ rel: "icon", url: "/favicon.ico" }],
     metadataBase: new URL("https://centralsanvito.it/"),
     alternates: {
       canonical: `/${lang}`,
