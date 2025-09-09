@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: "B&B Central",
   description: "Alojamiento frente al mar - Landing",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
+  metadataBase: new URL("https://centralsanvito.it/"),
 };
 
 const montserrat = Montserrat({
@@ -43,4 +44,24 @@ export default async function RootLayout({
       </body>
     </html>
   );
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: Locale }>;
+}): Promise<Metadata> {
+  const { lang } = await params;
+  const languages = Object.fromEntries([
+    ...i18n.locales.map((locale) => [locale, `/${locale}`] as const),
+    ["x-default", `/${i18n.defaultLocale}`] as const,
+  ]);
+
+  return {
+    metadataBase: new URL("https://centralsanvito.it/"),
+    alternates: {
+      canonical: `/${lang}`,
+      languages,
+    },
+  };
 }
