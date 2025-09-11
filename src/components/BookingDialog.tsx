@@ -402,6 +402,12 @@ const getTexts = (lang: Locale) => ({
     it: "Annulla",
     sk: "Zrušiť",
   }[lang],
+  cleaningFee: {
+    en: "Cleaning fee",
+    de: "Reinigungsgebühr",
+    it: "Costo di pulizia",
+    sk: "Poplatok za upratovanie",
+  }[lang],
 });
 
 export default function BookingDialog({
@@ -449,12 +455,18 @@ export default function BookingDialog({
 
   const numberOfDays = calculateDays();
 
-  const calculatePrice = () => {
+  const calculateAccommodationPrice = () => {
     if (!selectedApartment) return 0;
     const prices = apartmentPrices[selectedApartment];
     // Price is fixed base rate (100€) regardless of adults + 30€ per child
     const pricePerDay = prices.base + minors * prices.perChild;
     return pricePerDay * numberOfDays;
+  };
+
+  const calculatePrice = () => {
+    const accommodationCost = calculateAccommodationPrice();
+    const cleaningFee = 30; // Costo fijo de limpieza
+    return accommodationCost + cleaningFee;
   };
 
   const totalPrice = calculatePrice();
@@ -797,17 +809,14 @@ export default function BookingDialog({
                           </div>
                         )}
 
+                        <div className="flex justify-between">
+                          <span className="text-[#6e4a8d]/70">
+                            {texts.cleaningFee}:
+                          </span>
+                          <span className="font-medium">€30</span>
+                        </div>
+
                         <div className="border-t border-[#6e4a8d]/20 pt-2">
-                          <div className="flex justify-between">
-                            <span className="text-[#6e4a8d]/70">
-                              {texts.subtotalPerDay}:
-                            </span>
-                            <span className="font-medium">
-                              €
-                              {Math.round((totalPrice / numberOfDays) * 100) /
-                                100}
-                            </span>
-                          </div>
                           <div className="flex justify-between text-lg font-bold text-[#6e4a8d]">
                             <span>{texts.total}:</span>
                             <span>€{totalPrice}</span>
@@ -1011,6 +1020,12 @@ export default function BookingDialog({
                           </div>
                         </>
                       )}
+                      <div className="flex justify-between">
+                        <span className="text-[#6e4a8d]/70">
+                          {texts.cleaningFee}:
+                        </span>
+                        <span className="font-medium">€30</span>
+                      </div>
                       <div className="border-t border-[#6e4a8d]/20 pt-2">
                         <div className="flex justify-between text-lg font-bold text-[#6e4a8d]">
                           <span>{texts.total}:</span>
