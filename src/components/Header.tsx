@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -9,7 +10,7 @@ import {
   SheetClose,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { Menu, Award, Heart, MapPin } from "lucide-react";
+import { Menu, Heart, MapPin } from "lucide-react";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import Container from "./Container";
@@ -112,11 +113,15 @@ export default function Header({ lang }: { lang: Locale }) {
         <Container className="flex items-center justify-between py-4 lg:py-5">
           <Link
             href="#hero"
-            className={cn(scrolled ? "text-[#3f2561]" : "text-white")}
+            className="relative block h-12 w-auto max-w-[140px]"
           >
-            <span className="font-display text-2xl tracking-wider">
-              B&B CENTRAL
-            </span>
+            <Image
+              src="https://static-assets-manager.s3.us-east-1.amazonaws.com/Whats_App_Image_2026_02_19_at_15_30_02_1_97efa68d13.png"
+              width={738}
+              height={742}
+              alt="B&B Central San Vito Camere"
+              className="h-full w-full object-contain object-left"
+            />
           </Link>
 
           <nav className="hidden items-center gap-6 text-sm font-medium lg:flex">
@@ -171,17 +176,18 @@ export default function Header({ lang }: { lang: Locale }) {
                   <div className="border-b border-white/10 p-6">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
-                        <div className="rounded-full bg-gradient-to-r from-[#F59E0B] to-[#f6a92a] p-2">
-                          <Award className="size-5 text-white" />
+                        <div className="relative h-14 w-14 shrink-0">
+                          <Image
+                            src="https://static-assets-manager.s3.us-east-1.amazonaws.com/Whats_App_Image_2026_02_19_at_15_30_02_1_97efa68d13.png"
+                            width={738}
+                            height={742}
+                            alt="B&B Central"
+                            className="h-full w-full object-contain"
+                          />
                         </div>
-                        <div>
-                          <h2 className="font-display text-lg tracking-wider text-white">
-                            B&B CENTRAL
-                          </h2>
-                          <p className="text-xs text-white/60">
-                            San Vito Lo Capo
-                          </p>
-                        </div>
+                        <p className="text-xs text-white/60">
+                          San Vito Lo Capo
+                        </p>
                       </div>
                       <SheetClose asChild>
                         <Button

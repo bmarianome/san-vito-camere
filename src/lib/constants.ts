@@ -154,15 +154,34 @@ export const emailTexts = {
     receiptAttached: "Potvrdenie o platbe je priložené k tomuto emailu.",
   },
 };
+/** Precio por día según mes (1-12). Abril-Mayo 80, Junio 100, Julio 120, Agosto 150, Septiembre 150, Oct-Nov-Dic 80. Ene-Mar 80. */
+const SEASONAL_PRICE_BY_MONTH: Record<number, number> = {
+  1: 80, 2: 80, 3: 80, 4: 80, 5: 80, 6: 100, 7: 120, 8: 150, 9: 150, 10: 80, 11: 80, 12: 80,
+};
+
+export function getBasePriceForDate(date: Date): number {
+  const month = date.getMonth() + 1;
+  return SEASONAL_PRICE_BY_MONTH[month] ?? 80;
+}
+
+/** Lista de precios por periodo para mostrar en la web (por día). */
+export const seasonalPriceList = [
+  { periodKey: "aprilMay", price: 80 },
+  { periodKey: "june", price: 100 },
+  { periodKey: "july", price: 120 },
+  { periodKey: "august", price: 150 },
+  { periodKey: "september", price: 150 },
+  { periodKey: "octNovDec", price: 80 },
+] as const;
+
 export const apartmentPrices: Record<
   "marina" | "central" | "panoramic",
   {
-    base: number;
     perAdult: number;
     perChild: number;
   }
 > = {
-  marina: { base: 100, perAdult: 0, perChild: 30 },
-  central: { base: 100, perAdult: 0, perChild: 30 },
-  panoramic: { base: 100, perAdult: 0, perChild: 30 },
+  marina: { perAdult: 0, perChild: 30 },
+  central: { perAdult: 0, perChild: 30 },
+  panoramic: { perAdult: 0, perChild: 30 },
 };

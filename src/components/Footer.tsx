@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Mail, Phone, MapPin } from "lucide-react";
 
 export default function Footer({ lang }: { lang: Locale }) {
@@ -93,11 +94,14 @@ export default function Footer({ lang }: { lang: Locale }) {
           <div className="flex flex-col gap-12 lg:flex-row lg:justify-between lg:gap-16">
             {/* Brand section */}
             <div className="lg:max-w-sm lg:flex-shrink-0">
-              <div className="mb-6">
-                <h3 className="font-display mb-2 text-3xl text-white">
-                  B&B CENTRAL
-                </h3>
-                <div className="h-1 w-16 rounded-full bg-gradient-to-r from-[#F59E0B] to-[#f6a92a]"></div>
+              <div className="relative mb-6 h-16 w-40">
+                <Image
+                  src="https://static-assets-manager.s3.us-east-1.amazonaws.com/Whats_App_Image_2026_02_19_at_15_30_02_1_97efa68d13.png"
+                  width={738}
+                  height={742}
+                  alt="B&B Central San Vito Camere"
+                  className="h-full w-full object-contain object-left"
+                />
               </div>
               <p className="mb-6 text-sm leading-relaxed opacity-80">
                 {texts.description[lang]}

@@ -41,7 +41,12 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { submitBookingAction } from "@/actions";
-import { apartmentPrices, bookingSchema } from "@/lib/constants";
+import {
+  apartmentPrices,
+  bookingSchema,
+  getBasePriceForDate,
+  seasonalPriceList,
+} from "@/lib/constants";
 import { Calendar } from "@/components/ui/calendar";
 import {
   Popover,
@@ -408,6 +413,35 @@ const getTexts = (lang: Locale) => ({
     it: "Costo di pulizia",
     sk: "Poplatok za upratovanie",
   }[lang],
+  priceListTitle: {
+    en: "Price per day",
+    de: "Preis pro Tag",
+    it: "Lista prezzi per giorno",
+    sk: "Cena za deň",
+  }[lang],
+  priceListPeriods: {
+    aprilMay: {
+      en: "April–May",
+      de: "April–Mai",
+      it: "Aprile–Maggio",
+      sk: "Apríl–Máj",
+    }[lang],
+    june: { en: "June", de: "Juni", it: "Giugno", sk: "Jún" }[lang],
+    july: { en: "July", de: "Juli", it: "Luglio", sk: "Júl" }[lang],
+    august: { en: "August", de: "August", it: "Agosto", sk: "August" }[lang],
+    september: {
+      en: "September",
+      de: "September",
+      it: "Settembre",
+      sk: "September",
+    }[lang],
+    octNovDec: {
+      en: "October–November–December",
+      de: "Oktober–November–Dezember",
+      it: "Ottobre–Novembre–Dicembre",
+      sk: "Október–November–December",
+    }[lang],
+  },
 });
 
 export default function BookingDialog({
@@ -455,11 +489,12 @@ export default function BookingDialog({
 
   const numberOfDays = calculateDays();
 
+  const basePricePerDay = checkIn ? getBasePriceForDate(checkIn) : 80;
+
   const calculateAccommodationPrice = () => {
     if (!selectedApartment) return 0;
     const prices = apartmentPrices[selectedApartment];
-    // Price is fixed base rate (100€) regardless of adults + 30€ per child
-    const pricePerDay = prices.base + minors * prices.perChild;
+    const pricePerDay = basePricePerDay + minors * prices.perChild;
     return pricePerDay * numberOfDays;
   };
 
@@ -764,6 +799,30 @@ export default function BookingDialog({
                     )}
                   />
 
+                  {/* Lista de precios por día */}
+                  {selectedApartment && (
+                    <div className="rounded-lg border border-[#6e4a8d]/20 bg-white/80 p-4">
+                      <h4 className="mb-3 text-sm font-semibold text-[#6e4a8d]">
+                        {texts.priceListTitle}
+                      </h4>
+                      <ul className="space-y-1.5 text-sm text-[#6e4a8d]/80">
+                        {seasonalPriceList.map(({ periodKey, price }) => (
+                          <li
+                            key={periodKey}
+                            className="flex justify-between gap-4"
+                          >
+                            <span>
+                              {texts.priceListPeriods[periodKey]}
+                            </span>
+                            <span className="font-medium tabular-nums">
+                              €{price}/{texts.day}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
                   {/* Price Calculator */}
                   {selectedApartment && (
                     <div className="rounded-lg border border-[#6e4a8d]/20 bg-gradient-to-br from-[#f8f6ff] to-white p-6">
@@ -790,8 +849,7 @@ export default function BookingDialog({
                             {texts.basePriceAllAdults}:
                           </span>
                           <span className="font-medium">
-                            €{apartmentPrices[selectedApartment].base}/
-                            {texts.day}
+                            €{basePricePerDay}/{texts.day}
                           </span>
                         </div>
 
