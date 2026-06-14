@@ -16,7 +16,7 @@ export async function submitBookingAction(
     const receiptBase64 = Buffer.from(receiptArrayBuffer).toString("base64");
 
     const result = await resend.emails.send({
-      from: "Central San Vito Camere <noreply@emails.bmariano.me>",
+      from: "Central San Vito Camere <no-reply@emails.bmariano.me>",
       to: env.BOOKING_EMAIL,
       subject: emailTexts[lang].subject,
       html: htmlContent(data),
