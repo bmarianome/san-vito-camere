@@ -2,6 +2,7 @@ import "./src/env.js";
 
 /** @type {import("next").NextConfig} */
 const config = {
+  allowedDevOrigins: ["*.*.*.*"],
   experimental: {
     serverActions: {
       allowedOrigins: ["localhost:3000", "san-vito-camere.vercel.app"],
