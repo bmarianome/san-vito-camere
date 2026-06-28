@@ -558,8 +558,9 @@ export default function BookingDialog({
       };
 
       const result = await submitBookingAction(bookingData);
-      if (!result.success) {
-        throw new Error("Failed to submit booking");
+      if (!result.ok) {
+        toast.error(result.error);
+        return;
       }
 
       setOpen(false);

@@ -3,12 +3,18 @@
 import { Resend } from "resend";
 import { env } from "@/env";
 import { apartmentNames, emailTexts } from "./lib/constants";
+import { checkFormRateLimit } from "@/lib/form-rate-limit";
 
 const resend = new Resend(env.RESEND_API_KEY);
 
+export type FormActionResult = { ok: true } | { ok: false; error: string };
+
 export async function submitBookingAction(
   data: BookingFormData & { totalPrice: number; lang: Locale },
-) {
+): Promise<FormActionResult> {
+  const limit = await checkFormRateLimit("booking");
+  if (!limit.ok) return { ok: false, error: limit.error };
+
   try {
     const { firstName, lastName, lang, receipt } = data;
 
@@ -30,14 +36,13 @@ export async function submitBookingAction(
 
     if (result.error) {
       console.error("Error sending email:", result.error);
-      throw new Error("Failed to send booking email");
+      return { ok: false, error: "Failed to send booking email." };
     }
 
-    console.log("Booking email sent successfully:", result.data?.id);
-    return { success: true, id: result.data?.id };
+    return { ok: true };
   } catch (error) {
     console.error("Error in submitBookingAction:", error);
-    throw new Error("Failed to submit booking");
+    return { ok: false, error: "Failed to submit booking." };
   }
 }
 
