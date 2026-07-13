@@ -1,0 +1,386 @@
+{
+  "repo": "san-vito-camere",
+  "generatedAt": "2026-07-12T03:18:14.609Z",
+  "knip": {
+    "files": [],
+    "issues": [
+      {
+        "file": "src/components/icons.tsx",
+        "exports": [],
+        "types": [],
+        "dependencies": [],
+        "unlisted": []
+      },
+      {
+        "file": "src/lib/types.ts",
+        "exports": [],
+        "types": [],
+        "dependencies": [],
+        "unlisted": []
+      },
+      {
+        "file": "src/components/ui/accordion.tsx",
+        "exports": [],
+        "types": [],
+        "dependencies": [],
+        "unlisted": []
+      },
+      {
+        "file": "src/components/ui/alert-dialog.tsx",
+        "exports": [],
+        "types": [],
+        "dependencies": [],
+        "unlisted": []
+      },
+      {
+        "file": "src/components/ui/alert.tsx",
+        "exports": [],
+        "types": [],
+        "dependencies": [],
+        "unlisted": []
+      },
+      {
+        "file": "src/components/ui/aspect-ratio.tsx",
+        "exports": [],
+        "types": [],
+        "dependencies": [],
+        "unlisted": []
+      },
+      {
+        "file": "src/components/ui/avatar.tsx",
+        "exports": [],
+        "types": [],
+        "dependencies": [],
+        "unlisted": []
+      },
+      {
+        "file": "src/components/ui/badge.tsx",
+        "exports": [],
+        "types": [],
+        "dependencies": [],
+        "unlisted": []
+      },
+      {
+        "file": "src/components/ui/breadcrumb.tsx",
+        "exports": [],
+        "types": [],
+        "dependencies": [],
+        "unlisted": []
+      },
+      {
+        "file": "src/components/ui/card.tsx",
+        "exports": [],
+        "types": [],
+        "dependencies": [],
+        "unlisted": []
+      },
+      {
+        "file": "src/components/ui/checkbox.tsx",
+        "exports": [],
+        "types": [],
+        "dependencies": [],
+        "unlisted": []
+      },
+      {
+        "file": "src/components/ui/collapsible.tsx",
+        "exports": [],
+        "types": [],
+        "dependencies": [],
+        "unlisted": []
+      },
+      {
+        "file": "src/components/ui/command.tsx",
+        "exports": [],
+        "types": [],
+        "dependencies": [],
+        "unlisted": []
+      },
+      {
+        "file": "src/components/ui/context-menu.tsx",
+        "exports": [],
+        "types": [],
+        "dependencies": [],
+        "unlisted": []
+      },
+      {
+        "file": "src/components/ui/drawer.tsx",
+        "exports": [],
+        "types": [],
+        "dependencies": [],
+        "unlisted": []
+      },
+      {
+        "file": "src/components/ui/hover-card.tsx",
+        "exports": [],
+        "types": [],
+        "dependencies": [],
+        "unlisted": []
+      },
+      {
+        "file": "src/components/ui/input-otp.tsx",
+        "exports": [],
+        "types": [],
+        "dependencies": [],
+        "unlisted": []
+      },
+      {
+        "file": "src/components/ui/menubar.tsx",
+        "exports": [],
+        "types": [],
+        "dependencies": [],
+        "unlisted": []
+      },
+      {
+        "file": "src/components/ui/navigation-menu.tsx",
+        "exports": [],
+        "types": [],
+        "dependencies": [],
+        "unlisted": []
+      },
+      {
+        "file": "src/components/ui/pagination.tsx",
+        "exports": [],
+        "types": [],
+        "dependencies": [],
+        "unlisted": []
+      },
+      {
+        "file": "src/components/ui/progress.tsx",
+        "exports": [],
+        "types": [],
+        "dependencies": [],
+        "unlisted": []
+      },
+      {
+        "file": "src/components/ui/radio-group.tsx",
+        "exports": [],
+        "types": [],
+        "dependencies": [],
+        "unlisted": []
+      },
+      {
+        "file": "src/components/ui/resizable.tsx",
+        "exports": [],
+        "types": [],
+        "dependencies": [],
+        "unlisted": []
+      },
+      {
+        "file": "src/components/ui/scroll-area.tsx",
+        "exports": [],
+        "types": [],
+        "dependencies": [],
+        "unlisted": []
+      },
+      {
+        "file": "src/components/ui/separator.tsx",
+        "exports": [],
+        "types": [],
+        "dependencies": [],
+        "unlisted": []
+      },
+      {
+        "file": "src/components/ui/skeleton.tsx",
+        "exports": [],
+        "types": [],
+        "dependencies": [],
+        "unlisted": []
+      },
+      {
+        "file": "src/components/ui/slider.tsx",
+        "exports": [],
+        "types": [],
+        "dependencies": [],
+        "unlisted": []
+      },
+      {
+        "file": "src/components/ui/switch.tsx",
+        "exports": [],
+        "types": [],
+        "dependencies": [],
+        "unlisted": []
+      },
+      {
+        "file": "src/components/ui/table.tsx",
+        "exports": [],
+        "types": [],
+        "dependencies": [],
+        "unlisted": []
+      },
+      {
+        "file": "src/components/ui/tabs.tsx",
+        "exports": [],
+        "types": [],
+        "dependencies": [],
+        "unlisted": []
+      },
+      {
+        "file": "src/components/ui/toggle-group.tsx",
+        "exports": [],
+        "types": [],
+        "dependencies": [],
+        "unlisted": []
+      },
+      {
+        "file": "src/components/ui/toggle.tsx",
+        "exports": [],
+        "types": [],
+        "dependencies": [],
+        "unlisted": []
+      },
+      {
+        "file": "src/components/ui/tooltip.tsx",
+        "exports": [],
+        "types": [],
+        "dependencies": [],
+        "unlisted": []
+      },
+      {
+        "file": "package.json",
+        "exports": [],
+        "types": [],
+        "dependencies": [
+          "@radix-ui/react-accordion",
+          "@radix-ui/react-alert-dialog",
+          "@radix-ui/react-aspect-ratio",
+          "@radix-ui/react-avatar",
+          "@radix-ui/react-checkbox",
+          "@radix-ui/react-collapsible",
+          "@radix-ui/react-context-menu",
+          "@radix-ui/react-hover-card",
+          "@radix-ui/react-menubar",
+          "@radix-ui/react-navigation-menu",
+          "@radix-ui/react-progress",
+          "@radix-ui/react-radio-group",
+          "@radix-ui/react-scroll-area",
+          "@radix-ui/react-separator",
+          "@radix-ui/react-slider",
+          "@radix-ui/react-switch",
+          "@radix-ui/react-tabs",
+          "@radix-ui/react-toggle",
+          "@radix-ui/react-toggle-group",
+          "@radix-ui/react-tooltip",
+          "cmdk",
+          "input-otp",
+          "react-resizable-panels",
+          "recharts",
+          "vaul"
+        ],
+        "unlisted": []
+      },
+      {
+        "file": "src/lib/form-rate-limit.ts",
+        "exports": [],
+        "types": [],
+        "dependencies": [],
+        "unlisted": [
+          "server-only"
+        ]
+      },
+      {
+        "file": "src/lib/kv.ts",
+        "exports": [],
+        "types": [],
+        "dependencies": [],
+        "unlisted": [
+          "server-only"
+        ]
+      },
+      {
+        "file": "src/components/ui/sheet.tsx",
+        "exports": [
+          "SheetHeader",
+          "SheetFooter",
+          "SheetDescription"
+        ],
+        "types": [],
+        "dependencies": [],
+        "unlisted": []
+      },
+      {
+        "file": "src/components/ui/dialog.tsx",
+        "exports": [
+          "DialogClose",
+          "DialogFooter",
+          "DialogOverlay",
+          "DialogPortal"
+        ],
+        "types": [],
+        "dependencies": [],
+        "unlisted": []
+      },
+      {
+        "file": "src/components/ui/form.tsx",
+        "exports": [
+          "useFormField",
+          "FormDescription"
+        ],
+        "types": [],
+        "dependencies": [],
+        "unlisted": []
+      },
+      {
+        "file": "src/components/ui/select.tsx",
+        "exports": [
+          "SelectGroup",
+          "SelectLabel",
+          "SelectScrollDownButton",
+          "SelectScrollUpButton",
+          "SelectSeparator"
+        ],
+        "types": [],
+        "dependencies": [],
+        "unlisted": []
+      },
+      {
+        "file": "src/components/ui/calendar.tsx",
+        "exports": [
+          "CalendarDayButton"
+        ],
+        "types": [],
+        "dependencies": [],
+        "unlisted": []
+      },
+      {
+        "file": "src/components/ui/popover.tsx",
+        "exports": [
+          "PopoverAnchor"
+        ],
+        "types": [],
+        "dependencies": [],
+        "unlisted": []
+      },
+      {
+        "file": "src/components/ui/dropdown-menu.tsx",
+        "exports": [
+          "DropdownMenuPortal",
+          "DropdownMenuGroup",
+          "DropdownMenuLabel",
+          "DropdownMenuCheckboxItem",
+          "DropdownMenuRadioGroup",
+          "DropdownMenuRadioItem",
+          "DropdownMenuSeparator",
+          "DropdownMenuShortcut",
+          "DropdownMenuSub",
+          "DropdownMenuSubTrigger",
+          "DropdownMenuSubContent"
+        ],
+        "types": [],
+        "dependencies": [],
+        "unlisted": []
+      },
+      {
+        "file": "src/components/ui/carousel.tsx",
+        "exports": [],
+        "types": [
+          "CarouselApi"
+        ],
+        "dependencies": [],
+        "unlisted": []
+      }
+    ]
+  },
+  "disabledFlags": [],
+  "unlinkedRoutes": [],
+  "duplicateBasenames": []
+}

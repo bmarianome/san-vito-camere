@@ -1,0 +1,39 @@
+{
+  "repo": "san-vito-camere",
+  "generatedAt": "2026-07-12T03:21:07.766Z",
+  "envFile": "san-vito-camere/src/env.js",
+  "schemaVars": [
+    "NODE_ENV",
+    "RESEND_API_KEY",
+    "BOOKING_EMAIL",
+    "UPSTASH_REDIS_REST_URL",
+    "UPSTASH_REDIS_REST_TOKEN"
+  ],
+  "declaredUnused": [],
+  "usedOnlyInDeadCode": [],
+  "vercel": {
+    "linked": true,
+    "error": null,
+    "vars": [
+      "UPSTASH_REDIS_REST_TOKEN",
+      "UPSTASH_REDIS_REST_URL",
+      "BOOKING_EMAIL"
+    ],
+    "orphans": []
+  },
+  "usageMap": {
+    "NODE_ENV": [],
+    "RESEND_API_KEY": [
+      "san-vito-camere/src/actions.ts"
+    ],
+    "BOOKING_EMAIL": [
+      "san-vito-camere/src/actions.ts"
+    ],
+    "UPSTASH_REDIS_REST_URL": [
+      "san-vito-camere/src/lib/kv.ts"
+    ],
+    "UPSTASH_REDIS_REST_TOKEN": [
+      "san-vito-camere/src/lib/kv.ts"
+    ]
+  }
+}
