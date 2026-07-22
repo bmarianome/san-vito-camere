@@ -116,7 +116,7 @@ export default function Header({ lang }: { lang: Locale }) {
             className="relative block h-12 w-auto max-w-[140px]"
           >
             <Image
-              src="https://static-assets-manager.s3.us-east-1.amazonaws.com/Whats_App_Image_2026_02_19_at_15_30_02_1_97efa68d13.png"
+              src="https://rk9ahrgqaffz4nfw.public.blob.vercel-storage.com/Whats_App_Image_2026_02_19_at_15_30_02_1_97efa68d13.png"
               width={738}
               height={742}
               alt="B&B Central San Vito Camere"
@@ -178,7 +178,7 @@ export default function Header({ lang }: { lang: Locale }) {
                       <div className="flex items-center gap-3">
                         <div className="relative h-14 w-14 shrink-0">
                           <Image
-                            src="https://static-assets-manager.s3.us-east-1.amazonaws.com/Whats_App_Image_2026_02_19_at_15_30_02_1_97efa68d13.png"
+                            src="https://rk9ahrgqaffz4nfw.public.blob.vercel-storage.com/Whats_App_Image_2026_02_19_at_15_30_02_1_97efa68d13.png"
                             width={738}
                             height={742}
                             alt="B&B Central"

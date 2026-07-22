@@ -13,7 +13,7 @@ const config = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "static-assets-manager.s3.us-east-1.amazonaws.com",
+        hostname: "rk9ahrgqaffz4nfw.public.blob.vercel-storage.com",
       },
     ],
   },

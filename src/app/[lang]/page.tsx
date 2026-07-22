@@ -134,7 +134,7 @@ function Hero({ lang }: { lang: Locale }) {
     >
       <div className="absolute inset-0 -z-10">
         <Image
-          src="https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20250220_111429_917b6a0da1.jpg"
+          src="https://rk9ahrgqaffz4nfw.public.blob.vercel-storage.com/IMG_20250220_111429_917b6a0da1.jpg"
           width={3910}
           height={2607}
           alt={texts.imageAlt[lang]}
@@ -287,14 +287,14 @@ function Info({ lang }: { lang: Locale }) {
       <div className="absolute right-0 bottom-0 h-96 w-96 rounded-full bg-gradient-to-tl from-[#F59E0B]/10 to-transparent blur-3xl"></div>
 
       <Image
-        src="https://static-assets-manager.s3.us-east-1.amazonaws.com/image_1_removebg_preview_3d6f2508ea.png"
+        src="https://rk9ahrgqaffz4nfw.public.blob.vercel-storage.com/image_1_removebg_preview_3d6f2508ea.png"
         alt={texts.imageAlt.left[lang]}
         width={329}
         height={639}
         className="pointer-events-none absolute top-1/2 right-0 -translate-y-1/2 opacity-75"
       />
       <Image
-        src="https://static-assets-manager.s3.us-east-1.amazonaws.com/image_1_removebg_preview_3d6f2508ea.png"
+        src="https://rk9ahrgqaffz4nfw.public.blob.vercel-storage.com/image_1_removebg_preview_3d6f2508ea.png"
         alt={texts.imageAlt.right[lang]}
         width={329}
         height={639}
@@ -377,7 +377,7 @@ function Info({ lang }: { lang: Locale }) {
             </div>
 
             <Image
-              src="https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20250220_111429_917b6a0da1.jpg"
+              src="https://rk9ahrgqaffz4nfw.public.blob.vercel-storage.com/IMG_20250220_111429_917b6a0da1.jpg"
               width={3910}
               height={2607}
               alt={texts.imageAlt.bedroom[lang]}
@@ -1399,7 +1399,7 @@ function CTA({ lang }: { lang: Locale }) {
     <section id="cta" className="relative scroll-mt-12 overflow-hidden">
       <div className="absolute inset-0">
         <Image
-          src="https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20250220_111429_917b6a0da1.jpg"
+          src="https://rk9ahrgqaffz4nfw.public.blob.vercel-storage.com/IMG_20250220_111429_917b6a0da1.jpg"
           width={3910}
           height={2607}
           alt={texts.imageAlt[lang]}
@@ -1557,32 +1557,32 @@ const getInfoSectionFeatures = (lang: Locale) => [
 
 const suiteMarinaImages = [
   {
-    src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/DSC_1490_JPG_U_U_fead6845cd.JPG",
+    src: "https://rk9ahrgqaffz4nfw.public.blob.vercel-storage.com/DSC_1490_JPG_U_U_fead6845cd.JPG",
     w: 4016,
     h: 6016,
   },
   {
-    src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/DSC_1492_JPG_U_77e37e6025.JPG",
+    src: "https://rk9ahrgqaffz4nfw.public.blob.vercel-storage.com/DSC_1492_JPG_U_77e37e6025.JPG",
     w: 5860,
     h: 3912,
   },
   {
-    src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20250221_092959_df3e0ad1e6.jpg",
+    src: "https://rk9ahrgqaffz4nfw.public.blob.vercel-storage.com/IMG_20250221_092959_df3e0ad1e6.jpg",
     w: 2322,
     h: 3098,
   },
   {
-    src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20250220_210933_jpg_U_38ef53e24a.jpg",
+    src: "https://rk9ahrgqaffz4nfw.public.blob.vercel-storage.com/IMG_20250220_210933_jpg_U_38ef53e24a.jpg",
     w: 2368,
     h: 3158,
   },
   {
-    src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20250221_093645_59815e13cc.jpg",
+    src: "https://rk9ahrgqaffz4nfw.public.blob.vercel-storage.com/IMG_20250221_093645_59815e13cc.jpg",
     w: 3208,
     h: 2406,
   },
   {
-    src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20250220_085033_3389836b19.jpg",
+    src: "https://rk9ahrgqaffz4nfw.public.blob.vercel-storage.com/IMG_20250220_085033_3389836b19.jpg",
     w: 2448,
     h: 3264,
   },
@@ -1590,22 +1590,22 @@ const suiteMarinaImages = [
 
 const suiteCentralImages = [
   {
-    src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/DSC_1453_JPG_U_71c8bfbbed.JPG",
+    src: "https://rk9ahrgqaffz4nfw.public.blob.vercel-storage.com/DSC_1453_JPG_U_71c8bfbbed.JPG",
     w: 4016,
     h: 6016,
   },
   {
-    src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/DSC_1458_JPG_U_U_e7b808886c.JPG",
+    src: "https://rk9ahrgqaffz4nfw.public.blob.vercel-storage.com/DSC_1458_JPG_U_U_e7b808886c.JPG",
     w: 4016,
     h: 6016,
   },
   {
-    src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20250220_211206_jpg_U_1d8af6b45b.jpg",
+    src: "https://rk9ahrgqaffz4nfw.public.blob.vercel-storage.com/IMG_20250220_211206_jpg_U_1d8af6b45b.jpg",
     w: 2368,
     h: 3158,
   },
   {
-    src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20250220_210933_jpg_U_f6c95c8bcc.jpg",
+    src: "https://rk9ahrgqaffz4nfw.public.blob.vercel-storage.com/IMG_20250220_210933_jpg_U_f6c95c8bcc.jpg",
     w: 2368,
     h: 3158,
   },
@@ -1613,42 +1613,42 @@ const suiteCentralImages = [
 
 const suitePanoramicaImages = [
   {
-    src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/DSC_1469_JPG_UU_359b2d73f2.JPG",
+    src: "https://rk9ahrgqaffz4nfw.public.blob.vercel-storage.com/DSC_1469_JPG_UU_359b2d73f2.JPG",
     w: 6016,
     h: 4016,
   },
   {
-    src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/DSC_1483_JPG_U_U_f246bf342c.JPG",
+    src: "https://rk9ahrgqaffz4nfw.public.blob.vercel-storage.com/DSC_1483_JPG_U_U_f246bf342c.JPG",
     w: 3772,
     h: 5650,
   },
   {
-    src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20250220_215738_jpg_U_ddc5ec0156.jpg",
+    src: "https://rk9ahrgqaffz4nfw.public.blob.vercel-storage.com/IMG_20250220_215738_jpg_U_ddc5ec0156.jpg",
     w: 3060,
     h: 4080,
   },
   {
-    src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20250220_215317_baf3aa42bf.jpg",
+    src: "https://rk9ahrgqaffz4nfw.public.blob.vercel-storage.com/IMG_20250220_215317_baf3aa42bf.jpg",
     w: 2268,
     h: 3025,
   },
   {
-    src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20250220_215254_aafc052913.jpg",
+    src: "https://rk9ahrgqaffz4nfw.public.blob.vercel-storage.com/IMG_20250220_215254_aafc052913.jpg",
     w: 3264,
     h: 2448,
   },
   {
-    src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20250220_220012_jpg_U_04940c1888.jpg",
+    src: "https://rk9ahrgqaffz4nfw.public.blob.vercel-storage.com/IMG_20250220_220012_jpg_U_04940c1888.jpg",
     w: 2448,
     h: 3264,
   },
   {
-    src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20250220_220449_ce3120f986.jpg",
+    src: "https://rk9ahrgqaffz4nfw.public.blob.vercel-storage.com/IMG_20250220_220449_ce3120f986.jpg",
     w: 3089,
     h: 2316,
   },
   {
-    src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20250220_215338_jpg_U_05cd241703.jpg",
+    src: "https://rk9ahrgqaffz4nfw.public.blob.vercel-storage.com/IMG_20250220_215338_jpg_U_05cd241703.jpg",
     w: 2742,
     h: 1827,
   },
@@ -2340,27 +2340,27 @@ const getLocalAttractionsData = (lang: Locale) => [
 
 const cityImagesData = [
   {
-    src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20240417_224229_bd7cc53123.jpg",
+    src: "https://rk9ahrgqaffz4nfw.public.blob.vercel-storage.com/IMG_20240417_224229_bd7cc53123.jpg",
     w: 2875,
     h: 4020,
   },
   {
-    src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/DSC_1377_6b65a24025.JPG",
+    src: "https://rk9ahrgqaffz4nfw.public.blob.vercel-storage.com/DSC_1377_6b65a24025.JPG",
     w: 5528,
     h: 3685,
   },
   {
-    src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20250220_111429_917b6a0da1.jpg",
+    src: "https://rk9ahrgqaffz4nfw.public.blob.vercel-storage.com/IMG_20250220_111429_917b6a0da1.jpg",
     w: 3910,
     h: 2607,
   },
   {
-    src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20240415_200831_966f0a0014.jpg",
+    src: "https://rk9ahrgqaffz4nfw.public.blob.vercel-storage.com/IMG_20240415_200831_966f0a0014.jpg",
     w: 3948,
     h: 2960,
   },
   {
-    src: "https://static-assets-manager.s3.us-east-1.amazonaws.com/IMG_20250220_112404_bd327f5f38.jpg",
+    src: "https://rk9ahrgqaffz4nfw.public.blob.vercel-storage.com/IMG_20250220_112404_bd327f5f38.jpg",
     w: 3098,
     h: 2322,
   },
