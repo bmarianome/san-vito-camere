@@ -1,11 +1,9 @@
 "use server";
 
-import { Resend } from "resend";
 import { env } from "@/env";
 import { apartmentNames, emailTexts } from "./lib/constants";
 import { checkFormRateLimit } from "@/lib/form-rate-limit";
-
-const resend = new Resend(env.RESEND_API_KEY);
+import { sendEmail } from "@/lib/email";
 
 export type FormActionResult = { ok: true } | { ok: false; error: string };
 
@@ -21,7 +19,7 @@ export async function submitBookingAction(
     const receiptArrayBuffer = await receipt.arrayBuffer();
     const receiptBase64 = Buffer.from(receiptArrayBuffer).toString("base64");
 
-    const result = await resend.emails.send({
+    const result = await sendEmail({
       from: "Central San Vito Camere <no-reply@emails.bmariano.me>",
       to: env.BOOKING_EMAIL,
       subject: emailTexts[lang].subject,
