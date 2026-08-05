@@ -2,7 +2,7 @@
   "name": "san-vito-camere",
   "version": "0.1.0",
   "engines": {
-    "node": "24.x"
+    "node": ">=24"
   },
   "private": true,
   "type": "module",
